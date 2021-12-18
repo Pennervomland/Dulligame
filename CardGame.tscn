@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Background.jpg" type="Texture" id=1]
+
+[node name="CardGame" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 493.5, 290.75 )
+scale = Vector2( 0.696875, 0.689444 )
+texture = ExtResource( 1 )
