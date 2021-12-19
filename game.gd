@@ -1,5 +1,5 @@
 extends Node2D
-
+#HALLLOAJSDAJBDNIKQWIOBD
 onready var player1_active=true
 
 onready var player1 = $Player1Character
