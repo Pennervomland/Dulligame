@@ -1,5 +1,7 @@
 extends Node
 
+
+
 var is_card_played:bool = false
 var played_card
 var active_player
@@ -20,4 +22,4 @@ func _process(delta):
 		pass
 
 func activate_effects():
-	inactive_player.hp_bar -= damage
+	pass

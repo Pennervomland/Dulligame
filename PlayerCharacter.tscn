@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://GenericChar.gd" type="Script" id=1]
+[ext_resource path="res://PlayerCharacter.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/cardOnCharSprite.png" type="Texture" id=2]
 [ext_resource path="res://assets/characters/genericChar.png" type="Texture" id=3]
 [ext_resource path="res://heart.png" type="Texture" id=4]

@@ -50,3 +50,4 @@ func swap_active_player():
 		Global.active_player = player1
 		inactive_player = player2
 		Global.inactive_player = player2
+		
