@@ -27,11 +27,5 @@ func apply_damage(var damage):
 	hp = hp - damage
 
 
-func _on_Area2D_area_entered(area):
-	card_on_char_marker.visible = true
-
-
-func _on_Area2D_area_exited(area):
-	card_on_char_marker.visible = false
 
 
