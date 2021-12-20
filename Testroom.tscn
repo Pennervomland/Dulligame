@@ -20,4 +20,4 @@ position = Vector2( 865, 241 )
 z_index = 1
 
 [node name="CardMax" parent="CardHolder" instance=ExtResource( 1 )]
-position = Vector2( 525, 496 )
+position = Vector2( 512, 480 )
