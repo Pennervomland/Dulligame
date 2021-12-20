@@ -24,9 +24,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	#Puts card in use (which moves it center of the screen) and puts it out of focus on LMB press
-	if(Input.is_action_just_pressed("LeftMB")== true && is_mouse_on_card==true):
+	if(Input.is_action_just_released("LeftMB")== true && is_mouse_on_card==true):
 		is_card_in_use = true
 		is_card_in_focus = false
 		
@@ -34,15 +33,32 @@ func _process(delta):
 	if(is_card_in_use == true):
 		scale = Vector2(1,1)
 		position = Vector2(512,220)
+		#Activates the card
+		if(Input.is_action_just_pressed("LeftMB")== true && is_mouse_on_card==true):
+			trigger_effect()
 		
-	#Puts card out of use and puts it back on RMB press
+	#Puts card out of use and puts it back in the hand on RMB press
 	if(Input.is_action_just_pressed("RightMB") == true && is_card_in_use == true):
 		is_card_in_use = false
 		scale = Vector2(0.5,0.5)
 		position = start_pos
 
-
+#Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
+	Global.is_card_played = true
+	Global.played_card = self
+	card_basic_effect(0,0,0,0,0)
+	card_special_effect()
+
+func card_basic_effect(var damage:int, var heal:int, var armor:int, var mana_regen:int, var mana_cost):
+	Global.damage = damage
+	Global.heal = heal
+	Global.armor = armor
+	Global.mana_regeneration = mana_regen
+	Global.mana_cost = mana_cost
+	Global.activate_effects()
+
+func card_special_effect():
 	pass
 
 #When mouse enters card area collision shape
