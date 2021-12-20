@@ -1,25 +1,23 @@
 extends Node
 
+onready var hp_player1 = 100
+onready var armor_player1 = 0 
+onready var mana_player1 = 3
+onready var deck_size_player1 = 0
+onready var discard_pile_size_player1 = 0
+
+onready var hp_player2 = 100
+onready var armor_player2 = 0 
+onready var mana_player2 = 3
+onready var deck_size_player2 = 0
+onready var discard_pile_size_player2 = 0
 
 
-var is_card_played:bool = false
+
 var played_card
 var active_player
 var inactive_player
 
-var damage:int= 0;
-var heal:int= 0;
-var armor:int= 0;
-var mana_regeneration:int= 0;
-var mana_cost: int= 0;
 
 
-func _ready():
-	is_card_played = false
 
-func _process(delta):
-	if(is_card_played == true):
-		pass
-
-func activate_effects():
-	pass
