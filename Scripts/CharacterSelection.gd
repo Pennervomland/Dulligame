@@ -24,7 +24,7 @@ func _on_MaxButton_pressed():
 	select_character("Max")
 	change_player()
 	if(characters_selected==2):
-		get_tree().change_scene("res://Testroom.tscn")
+		get_tree().change_scene("res://Scenes//Testroom.tscn")
 
 
 func select_character(var character_name:String):

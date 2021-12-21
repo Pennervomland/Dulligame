@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CardStack.png-458e1281438770d2eec6173bb8824772.stex"
+path="res://.import/heart.png-9a2fa56e49d8a002fed7c28ce07513e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CardStack.png"
-dest_files=[ "res://.import/CardStack.png-458e1281438770d2eec6173bb8824772.stex" ]
+source_file="res://assets/heart.png"
+dest_files=[ "res://.import/heart.png-9a2fa56e49d8a002fed7c28ce07513e0.stex" ]
 
 [params]
 

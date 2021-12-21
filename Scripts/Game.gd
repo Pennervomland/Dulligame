@@ -1,6 +1,6 @@
 extends Node2D
 
-var max_character_scene = preload("res://MaxCharacter.tscn")
+var max_character_scene = preload("res://Scenes//MaxCharacter.tscn")
 
 onready var position_player1 = $PositionPlayer1
 onready var position_player2 = $PositionPlayer2
@@ -21,14 +21,16 @@ var temp_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.hand = $Hand
 	toggle_current_player()
 	$UI.connect("end_turn_signal",self,"next_turn")
 	generate_character(Global.selected_character_player1)
 	generate_character(Global.selected_character_player2)
 	active_player = player1
-	Global.active_player = player1
+	#Global.active_player = player1
 	inactive_player= player2
-	Global.inactive_player= player2
+	#Global.inactive_player= player2
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,7 +50,7 @@ func generate_character(var character_name):
 		character1.is_player1 = true
 		player1 = instance
 		Global.player1 = instance
-		character1.generate_cards_in_deck(2)
+		character1.generate_cards_in_deck(5)
 		generated_character_count += 1
 		
 	else:

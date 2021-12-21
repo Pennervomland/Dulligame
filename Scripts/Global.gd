@@ -22,6 +22,7 @@ var played_card
 var active_player
 var inactive_player
 
+var hand
 
 
 
