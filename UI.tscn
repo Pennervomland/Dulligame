@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://BebasNeue-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://CardStack.png" type="Texture" id=2]
@@ -26,6 +26,12 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=7]
 size = 306
 outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 71
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
@@ -200,5 +206,17 @@ position = Vector2( 868.5, 556 )
 scale = Vector2( 0.289, 0.25 )
 z_index = -1
 texture = ExtResource( 4 )
+
+[node name="RoundCount" type="Label" parent="."]
+margin_left = 460.0
+margin_top = 30.0
+margin_right = 541.0
+margin_bottom = 129.0
+custom_fonts/font = SubResource( 8 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="EndTurnButton" to="." method="_on_EndTurnButton_pressed"]
