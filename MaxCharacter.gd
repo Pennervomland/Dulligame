@@ -15,9 +15,9 @@ func init(var is_player1):
 
 
 func generate_cards_in_deck():
-	for i in range(0,1):
+	for i in range(0,5):
 		var instance = max_card.instance()
-		instance.position = Vector2(100,100)
+		instance.position = Vector2(512,1000)
+		instance.position.x += i*100
 		$Deck.add_child(instance)
 		put_card_in_deck(instance)
-		
