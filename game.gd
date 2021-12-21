@@ -49,7 +49,6 @@ func generate_character(var character_name):
 		character1.is_player1 = true
 		character1.generate_cards_in_deck(2)
 		generated_character_count += 1
-		print(instance, "1")
 	else:
 		character2 =instance
 		character2.position = position_player2.position
