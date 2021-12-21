@@ -104,7 +104,6 @@ func put_card_in_deck(var card):
 		
 
 func put_card_to_discard_pile(var card):
-		
 	discard_pile.append(card)
 	discard_pile_size = discard_pile.size()
 	if is_player1:

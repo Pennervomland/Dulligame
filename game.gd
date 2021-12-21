@@ -23,12 +23,12 @@ var temp_player
 func _ready():
 	toggle_current_player()
 	$UI.connect("end_turn_signal",self,"next_turn")
+	generate_character(Global.selected_character_player1)
+	generate_character(Global.selected_character_player2)
 	active_player = player1
 	Global.active_player = player1
 	inactive_player= player2
 	Global.inactive_player= player2
-	generate_character(Global.selected_character_player1)
-	generate_character(Global.selected_character_player2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,13 +46,19 @@ func generate_character(var character_name):
 		character1 = instance
 		character1.position = position_player1.position
 		character1.is_player1 = true
+		player1 = instance
+		Global.player1 = instance
 		character1.generate_cards_in_deck(2)
 		generated_character_count += 1
+		
 	else:
 		character2 =instance
 		character2.position = position_player2.position
 		character2.is_player1 = false
+		player2 = instance
+		Global.player2 = instance
 		character2.generate_cards_in_deck(2)
+		
 
 func toggle_current_player():
 	if(Global.round_counter % 2 == 1):

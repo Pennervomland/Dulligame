@@ -68,6 +68,6 @@ func _on_Area2D_mouse_exited():
 
 func discard_card():
 	is_card_in_use = false
-	self.position = Vector2(-100,-100)
+	self.position = Vector2(ProjectSettings.get_setting("display/window/size/width")+100,  ProjectSettings.get_setting("display/window/size/height")+100)
 	Global.active_player.put_card_to_discard_pile(self)
 	
