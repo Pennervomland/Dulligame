@@ -21,7 +21,7 @@ var temp_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	toggle_current_player()
 	$UI.connect("end_turn_signal",self,"next_turn")
 	active_player = player1
 	Global.active_player = player1
@@ -29,7 +29,6 @@ func _ready():
 	Global.inactive_player= player2
 	generate_character(Global.selected_character_player1)
 	generate_character(Global.selected_character_player2)
-	print(character1.is_player1, " ",character2.is_player1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
