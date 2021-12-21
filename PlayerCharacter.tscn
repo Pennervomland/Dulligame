@@ -64,4 +64,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Deck" type="Node" parent="."]
+[node name="Hand" type="Node2D" parent="."]

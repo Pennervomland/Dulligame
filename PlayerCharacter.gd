@@ -4,7 +4,7 @@ onready var hp = 100
 onready var armor = 0 
 onready var mana = 3
 
-var is_player1
+var is_player1:bool
 
 var deck_size
 var deck = []
@@ -23,34 +23,32 @@ func _ready():
 	hp_bar.value = hp
 	armor_label.text = str(armor)
 	
-# Gets called in inheriting classes/nodes
-func init_generic_character(var is_player1_temp):
-	is_player1 = is_player1_temp
-	deck_size = deck.size()
-	discard_pile_size = discard_pile.size()
-	if is_player1:
-		Global.hp_player1 = hp
-		Global.armor_player1 = armor
-		Global.mana_player1 = mana
-		Global.deck_size_player1 = deck_size
-		Global.discard_pile_size_player1 = discard_pile_size
-		Global.active_player = self
-	else:
-		Global.hp_player2 = hp
-		Global.armor_player2 = armor
-		Global.mana_player2 = mana
-		Global.deck_size_player2 = deck_size
-		Global.discard_pile_size_player2 = discard_pile_size
-		Global.inactive_player = self
-	
-	
+### Sollte in Game.gd sein bei func generate_character() ###
+#func init_generic_character(var is_player1_temp):
+#	is_player1 = is_player1_temp
+#	deck_size = deck.size()
+#	discard_pile_size = discard_pile.size()
+#	if is_player1:
+#		Global.hp_player1 = hp
+#		Global.armor_player1 = armor
+#		Global.mana_player1 = mana
+#		Global.deck_size_player1 = deck_size
+#		Global.discard_pile_size_player1 = discard_pile_size
+#		Global.active_player = self
+#	else:
+#		Global.hp_player2 = hp
+#		Global.armor_player2 = armor
+#		Global.mana_player2 = mana
+#		Global.deck_size_player2 = deck_size
+#		Global.discard_pile_size_player2 = discard_pile_size
+#		Global.inactive_player = self
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(hp_bar.value <= 0 && dead == false):
 		rotation = 90
 		dead = true
-
 
 
 func apply_damage(var damage):

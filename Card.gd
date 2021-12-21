@@ -30,7 +30,7 @@ func init(var new_id):
 func _process(delta):
 	#Puts card in use (which moves it center of the screen) and puts it out of focus on LMB press
 	if(Input.is_action_just_released("LeftMB")== true && is_mouse_on_card==true):
-		print("released")
+		print(self)
 		is_card_in_use = true
 		is_card_in_focus = false
 		
@@ -55,6 +55,7 @@ func _on_Area2D_mouse_entered():
 	if(is_card_in_use == false):
 		scale = Vector2(0.75, 0.75)
 		is_card_in_focus = true
+	
 
 #When mouse exits card area collision shape
 func _on_Area2D_mouse_exited():
