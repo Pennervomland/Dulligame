@@ -72,6 +72,5 @@ func discard_card():
 	var viewport:Vector2 = get_viewport().get_visible_rect().size 
 	self.position = Vector2(-200,viewport.y+300)
 	
-	
 	Global.active_player.put_card_to_discard_pile(self)
 	
