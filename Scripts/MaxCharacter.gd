@@ -19,7 +19,7 @@ func generate_cards_in_deck(var amount: int):
 func generate_max_card_in_deck(var i):
 	var instance = max_card.instance()
 	get_tree().root.get_child(0).add_child(instance)
-	if (self.is_player1):
+	if (self.character1_turn):
 		instance.position = Vector2(300,400)
 	else:
 		instance.position = Vector2(300,400)
