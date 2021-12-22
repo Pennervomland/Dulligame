@@ -15,7 +15,7 @@ func render_new_cards(var new_cards):
 	if (new_cards.size() <= maximal_card_amount):
 		cards = new_cards
 		card_amount = cards.size()
-		var params = calc_new_card_positions()
+		var params = calc_card_positions()
 		apply_new_card_positions(params[0],params[1], params[2])
 		
 
@@ -26,7 +26,7 @@ func apply_new_card_positions(var new_card_positions, var new_card_rotations, va
 		cards[card_index].rotation_degrees = new_card_rotations[card_index]
 		cards[card_index].z_index = new_card_z_indexes[card_index]
 
-func calc_new_card_positions ():
+func calc_card_positions ():
 	
 	var new_card_positions = []
 	var new_card_rotations = []
@@ -73,6 +73,40 @@ func calc_new_card_positions ():
 		new_card_z_indexes.append(new_z_index)
 		
 	return [new_card_positions,new_card_rotations,new_card_z_indexes]
+
+
+func remove_card(var card_to_remove):
+	var card_to_remove_index = get_index_in_card_array(card_to_remove)
+	
+	var params = calc_card_positions()
+	var old_card_positions = params[0]
+	var old_card_rotations = params[1]
+	var old_card_z_indexes = params[2]
+	
+	for i in range(card_to_remove_index,card_amount-1):
+		cards[i] = cards[i+1]
+		old_card_positions[i] = old_card_positions[i+1]
+		old_card_rotations[i] = old_card_rotations[i+1]
+		old_card_z_indexes[i] = old_card_z_indexes[i+1] 
+		
+	cards[card_amount-1] = null
+	card_amount = card_amount - 1 
+
+	
+	
+	
+func move_cards_to_new_position():
+	pass
+
+
+
+
+
+func get_index_in_card_array(var card):
+	for i in range(0,card_amount):
+		if (card == cards[i]):
+			return i
+	return -1
 
 
 func radian_of(var angle_in_degrees):
