@@ -36,12 +36,12 @@ func insert(var card):
 	
 	card_in_focus_array.append(card)
 	card_in_focus_array.sort_custom(self, "sorting_function")
-	#print(card_in_focus_array,"Index 0: ", card_in_focus_array[0])
 
 func delete(var card):
 	card_in_focus_array.erase(card)
 	card_in_focus_array.sort_custom(self, "sorting_function")
-	#print(card_in_focus_array)
+	if(card_in_focus_array.size()>0):
+		card_in_focus_array[0].scale = Vector2(0.75,0.75)
 	
 	
 func sorting_function(var card_a, var card_b):

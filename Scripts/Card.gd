@@ -57,8 +57,6 @@ func _on_Area2D_mouse_entered():
 	is_mouse_on_card = true
 	if(is_card_in_use == false):
 		Global.insert(self)
-		#if(Global.card_in_focus_array.size() > 0):
-			#print(Global.card_in_focus_array[0])
 		if(Global.card_in_focus_array[0] == self):
 			is_card_in_focus = true
 			scale = Vector2(0.75, 0.75)
