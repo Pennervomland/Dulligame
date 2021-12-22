@@ -56,19 +56,22 @@ func _on_Area2D_mouse_entered():
 	#Puts card in focus (makes it slightly bigger) if it's not in use
 	is_mouse_on_card = true
 	if(is_card_in_use == false):
-		is_card_in_focus = true
 		Global.insert(self)
+		#if(Global.card_in_focus_array.size() > 0):
+			#print(Global.card_in_focus_array[0])
 		if(Global.card_in_focus_array[0] == self):
+			is_card_in_focus = true
 			scale = Vector2(0.75, 0.75)
 
 #When mouse exits card area collision shape
 func _on_Area2D_mouse_exited():
 	#Puts card out of focus (makes it slightly smaller) if it's not in use
-	if(is_card_in_use == false):
-		scale = Vector2(0.5,0.5)
+	Global.delete(self)
+	if(!is_card_in_use):
+		scale = Vector2(0.5, 0.5)
 	is_card_in_focus = false
 	is_mouse_on_card = false
-	Global.delete(self)
+	
 	
 
 func discard_card():

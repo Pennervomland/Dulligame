@@ -28,17 +28,24 @@ var inactive_player
 
 var hand
 
+func _process(delta):
+	for i in range(1,card_in_focus_array.size()):
+		card_in_focus_array[i].scale= Vector2(0.5,0.5)
+
 func insert(var card):
+	
 	card_in_focus_array.append(card)
 	card_in_focus_array.sort_custom(self, "sorting_function")
+	#print(card_in_focus_array,"Index 0: ", card_in_focus_array[0])
 
 func delete(var card):
 	card_in_focus_array.erase(card)
 	card_in_focus_array.sort_custom(self, "sorting_function")
+	#print(card_in_focus_array)
 	
 	
 func sorting_function(var card_a, var card_b):
-	if(card_a.z_index < card_b.z_index):
+	if(card_a.z_index > card_b.z_index):
 		return true
 	else:
 		return false
