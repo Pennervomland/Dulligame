@@ -31,6 +31,7 @@ func _process(delta):
 	#Puts card in use (which moves it center of the screen) and puts it out of focus on LMB press
 	if(Input.is_action_just_released("LeftMB")== true && is_mouse_on_card==true):
 		print(self)
+		self.rotation_degrees = 0
 		is_card_in_use = true
 		is_card_in_focus = false
 		
@@ -40,6 +41,7 @@ func _process(delta):
 		is_card_in_use = false
 		scale = Vector2(0.5,0.5)
 		position = start_pos
+	
 
 
 func card_basic_effect():
@@ -53,17 +55,19 @@ func _on_Area2D_mouse_entered():
 	#Puts card in focus (makes it slightly bigger) if it's not in use
 	is_mouse_on_card = true
 	if(is_card_in_use == false):
-		scale = Vector2(0.75, 0.75)
 		is_card_in_focus = true
-	
+		Global.insert(self)
+		if(Global.card_in_focus_array[0] == self):
+			scale = Vector2(0.75, 0.75)
 
 #When mouse exits card area collision shape
 func _on_Area2D_mouse_exited():
 	#Puts card out of focus (makes it slightly smaller) if it's not in use
 	if(is_card_in_use == false):
 		scale = Vector2(0.5,0.5)
-	is_mouse_on_card = false
 	is_card_in_focus = false
+	is_mouse_on_card = false
+	Global.delete(self)
 	
 
 func discard_card():

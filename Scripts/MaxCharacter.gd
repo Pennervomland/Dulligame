@@ -22,6 +22,6 @@ func generate_max_card_in_deck(var i):
 	if (self.character1_turn):
 		instance.position = Vector2(300,400)
 	else:
-		instance.position = Vector2(300,400)
+		instance.position = Vector2(300,1000)
 	instance.position.x += i*100
 	put_card_in_deck(instance)
