@@ -1,5 +1,18 @@
 extends Node
 
+var interpolation_needed:bool = false
+var t = 0.0
+export var interpolation_speed:float = 0.4
+
+var old_card_positions_global
+var old_card_rotations_global
+var old_card_z_indexes_global
+
+var new_card_positions_global
+var new_card_rotations_global
+var new_card_z_indexes_global
+
+
 var cards = []
 var card_amount:int = 0
 
@@ -17,10 +30,8 @@ func render_new_cards(var new_cards):
 		card_amount = cards.size()
 		var params = calc_card_positions()
 		apply_new_card_positions(params[0],params[1], params[2])
-		
 
 func apply_new_card_positions(var new_card_positions, var new_card_rotations, var new_card_z_indexes):
-	
 	for card_index in range(0,card_amount):
 		cards[card_index].position = new_card_positions[card_index]
 		cards[card_index].rotation_degrees = new_card_rotations[card_index]
@@ -74,7 +85,6 @@ func calc_card_positions ():
 		
 	return [new_card_positions,new_card_rotations,new_card_z_indexes]
 
-
 func remove_card(var card_to_remove):
 	var card_to_remove_index = get_index_in_card_array(card_to_remove)
 	
@@ -90,17 +100,32 @@ func remove_card(var card_to_remove):
 		old_card_z_indexes[i] = old_card_z_indexes[i+1] 
 		
 	cards[card_amount-1] = null
+	old_card_positions[card_amount-1] = null
+	old_card_rotations[card_amount-1] = null
+	old_card_z_indexes[card_amount-1] = null
 	card_amount = card_amount - 1 
-
 	
+	old_card_positions_global = old_card_positions
+	old_card_positions_global = old_card_rotations
+	old_card_z_indexes_global = old_card_z_indexes
+
+	params = calc_card_positions()
+	new_card_positions_global = params[0]
+	new_card_rotations_global = params[1]
+	new_card_z_indexes_global = params[2]
 	
+	for i in range(0, card_amount):
+		cards[i].z_index = new_card_z_indexes_global[i]
+
+
+
+func _physics_process(delta):
+	t += delta * interpolation_speed
+	for card_index in range(0, card_amount):
+		var current_card = cards[card_index]
+		current_card.position = old_card_positions_global[card_index].linear_interpolate(new_card_positions_global[card_index],t)
+		current_card.rotation = old_card_rotations_global[card_index].linear_interpolate(new_card_rotations_global[card_index],t)
 	
-func move_cards_to_new_position():
-	pass
-
-
-
-
 
 func get_index_in_card_array(var card):
 	for i in range(0,card_amount):
