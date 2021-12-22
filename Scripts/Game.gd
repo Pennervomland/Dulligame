@@ -24,12 +24,12 @@ var temp_player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.hand = $Hand
-	toggle_current_player()
 	$UI.connect("end_turn_signal",self,"next_turn")
 	generate_character(Global.selected_character_player1)
 	generate_character(Global.selected_character_player2)
 	Global.active_player = Global.player1
 	Global.inactive_player = Global.player2
+	next_turn()
 	active_player = player1
 	inactive_player= player2
 	
