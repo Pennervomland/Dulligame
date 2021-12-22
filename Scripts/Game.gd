@@ -2,6 +2,8 @@ extends Node2D
 
 var max_character_scene = preload("res://Scenes//MaxCharacter.tscn")
 
+signal player_turn_assign
+
 onready var position_player1 = $PositionPlayer1
 onready var position_player2 = $PositionPlayer2
 
@@ -26,10 +28,10 @@ func _ready():
 	$UI.connect("end_turn_signal",self,"next_turn")
 	generate_character(Global.selected_character_player1)
 	generate_character(Global.selected_character_player2)
+	Global.active_player = Global.player1
+	Global.inactive_player = Global.player2
 	active_player = player1
-	#Global.active_player = player1
 	inactive_player= player2
-	#Global.inactive_player= player2
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,17 +66,21 @@ func generate_character(var character_name):
 
 func toggle_current_player():
 	if(Global.round_counter % 2 == 1):
+		print("round % = 1")
 		Global.active_player = Global.player1
 		Global.inactive_player = Global.player2
-	else:
+	elif(Global.round_counter % 2 == 0):
+		print("round % = 0")
 		Global.active_player = Global.player2
 		Global.inactive_player = Global.player1
 
 func next_turn():
 	print("Next turn")
 	trigger_permanent_effect()
-	toggle_current_player()
 	Global.round_counter+=1
+	toggle_current_player()
+	emit_signal("player_turn_assign")
+
 
 
 func trigger_permanent_effect():

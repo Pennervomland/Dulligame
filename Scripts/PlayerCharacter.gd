@@ -1,5 +1,6 @@
 extends Sprite
 
+onready var game = get_tree().root.get_child(1)
 
 onready var hp = 100
 onready var armor = 0 
@@ -7,7 +8,7 @@ onready var mana = 3
 
 var is_player1:bool
 
-var character_turn
+var character1_turn
 
 var deck_size
 var deck = []
@@ -23,6 +24,7 @@ var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game.connect("player_turn_assign", self, "turn_assign")
 	hp_bar.value = hp
 	armor_label.text = str(armor)
 
@@ -37,15 +39,15 @@ func _process(delta):
 
 func turn_assign():
 	if (is_player1 && Global.active_player == Global.player1):
-		character_turn = true
+		character1_turn = true
 		print("Player1")
 	else:
-		character_turn = false
+		character1_turn = false
 		print("Player2")
 
 func apply_damage(var damage):
 	hp = hp - damage
-	if is_player1:
+	if character1_turn:
 		Global.hp_player1 = hp
 	else:
 		Global.hp_player2 = hp
@@ -54,7 +56,7 @@ func apply_damage(var damage):
 
 func apply_healing(var healing):
 	hp = hp + healing
-	if is_player1:
+	if character1_turn:
 		Global.hp_player1 = hp
 	else:
 		Global.hp_player2 = hp
@@ -63,7 +65,7 @@ func apply_healing(var healing):
 
 func apply_mana_costs(var mana_costs):
 	mana = mana - mana_costs
-	if is_player1:
+	if character1_turn:
 		Global.mana_player1 = mana
 	else:
 		Global.mana_player2 = mana
@@ -71,7 +73,7 @@ func apply_mana_costs(var mana_costs):
 
 func apply_mana_bonus(var mana_bonus):
 	mana = mana - mana_bonus
-	if is_player1:
+	if character1_turn:
 		Global.mana_player1 = mana
 	else:
 		Global.mana_player2 = mana
@@ -79,7 +81,7 @@ func apply_mana_bonus(var mana_bonus):
 
 func apply_armor(var armor_difference):
 	armor = armor + armor_difference
-	if is_player1:
+	if character1_turn:
 		Global.armor_player1 = armor
 	else:
 		Global.armor_player2 = armor
@@ -89,7 +91,7 @@ func apply_armor(var armor_difference):
 func put_card_in_deck(var card):
 	deck.append(card)
 	deck_size = deck.size()
-	if is_player1:
+	if character1_turn:
 		Global.deck_size_player1 = deck_size
 	else:
 		Global.deck_size_player2 = deck_size
@@ -98,14 +100,14 @@ func put_card_in_deck(var card):
 func put_card_to_discard_pile(var card):
 	discard_pile.append(card)
 	discard_pile_size = discard_pile.size()
-	if is_player1:
+	if character1_turn:
 		Global.discard_pile_size_player1 = discard_pile_size
 	else:
 		Global.discard_pile_size_player2 = discard_pile_size
 		
 	deck.erase(card)
 	deck_size = deck.size()
-	if is_player1:
+	if character1_turn:
 		Global.deck_size_player1 = deck_size
 	else:
 		Global.deck_size_player2 = deck_size
