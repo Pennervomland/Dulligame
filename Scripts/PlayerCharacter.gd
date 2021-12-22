@@ -1,10 +1,13 @@
 extends Sprite
 
+
 onready var hp = 100
 onready var armor = 0 
 onready var mana = 3
 
 var is_player1:bool
+
+var character_turn
 
 var deck_size
 var deck = []
@@ -24,12 +27,21 @@ func _ready():
 	armor_label.text = str(armor)
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(hp_bar.value <= 0 && dead == false):
 		rotation = 90
 		dead = true
+		
 
+func turn_assign():
+	if (is_player1 && Global.active_player == Global.player1):
+		character_turn = true
+		print("Player1")
+	else:
+		character_turn = false
+		print("Player2")
 
 func apply_damage(var damage):
 	hp = hp - damage

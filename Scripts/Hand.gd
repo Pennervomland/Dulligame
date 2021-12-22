@@ -45,15 +45,15 @@ func apply_new_card_positions ():
 			new_z_index = ceil(card_amount/2)-steps_to_left
 			var beta = 90 + angle_to_left
 			var direction:Vector2 = Vector2(cos(radian_of(beta)),-sin(radian_of(beta)))
-			print("dir: ",str(direction))
+
 			new_card_pos = circle_center + radius * direction
 			new_card_rotation = -angle_to_left
 		
-		print("new card pos: ",str(new_card_pos))
+
 		cards[card_index].position = new_card_pos
 		
-		print("new card rot: ",str(new_card_rotation))
-		cards[card_index].rotation_degrees = new_card_rotation#
+
+		cards[card_index].rotation_degrees = new_card_rotation
 		
 		cards[card_index].z_index = new_z_index
 
