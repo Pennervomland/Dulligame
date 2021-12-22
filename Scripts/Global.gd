@@ -14,7 +14,7 @@ onready var deck_size_player2 = 0
 onready var discard_pile_size_player2 = 0
 onready var selected_character_player2
 
-onready var round_counter = 1
+onready var round_counter = 0
 	
 var player1
 var player2

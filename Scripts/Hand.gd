@@ -20,7 +20,6 @@ func render_new_cards(var new_cards):
 		
 
 func apply_new_card_positions(var new_card_positions, var new_card_rotations, var new_card_z_indexes):
-	print(new_card_positions)
 	
 	for card_index in range(0,card_amount):
 		cards[card_index].position = new_card_positions[card_index]

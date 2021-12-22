@@ -48,9 +48,11 @@ func turn_assign():
 func apply_damage(var damage):
 	hp = hp - damage
 	if character1_turn:
-		Global.hp_player1 = hp
-	else:
+		print("Player2 Hp abgezogen")
 		Global.hp_player2 = hp
+	else:
+		print("Player1 Hp abgezogen")
+		Global.hp_player1 = hp
 	hp_bar.value = hp
 	
 
@@ -66,8 +68,10 @@ func apply_healing(var healing):
 func apply_mana_costs(var mana_costs):
 	mana = mana - mana_costs
 	if character1_turn:
+		print("player1 mana abgezogen")
 		Global.mana_player1 = mana
 	else:
+		print("player2 mana abgezogen")
 		Global.mana_player2 = mana
 	
 
