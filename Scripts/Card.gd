@@ -34,6 +34,7 @@ func _process(delta):
 		self.rotation_degrees = 0
 		is_card_in_use = true
 		is_card_in_focus = false
+		Global.hand.remove_card(self)
 		
 		
 	#Puts card out of use and puts it back in the hand on RMB press
