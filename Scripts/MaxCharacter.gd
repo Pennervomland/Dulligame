@@ -12,16 +12,13 @@ func generate_cards_in_deck(var amount: int):
 		generate_max_card_in_deck(i)
 		
 	#dreckig
-	if is_player1:
-		Global.hand.render_new_cards(deck)
+	#if is_player1:
+	#	Global.hand.render_new_cards(deck)
 	
 # das var i kann entfernt werden. einfach nur damit n bssl platz zwischen karten vorhanden ist
 func generate_max_card_in_deck(var i):
 	var instance = max_card.instance()
-	get_tree().root.get_child(1).get_child(3).add_child(instance)
-	if (self.character1_turn):
-		instance.position = Vector2(300,400)
-	else:
-		instance.position = Vector2(300,1000)
-	instance.position.x += i*100
+	#get_tree().root.get_child(1).get_child(3).add_child(instance)
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	instance.position = Vector2(-100,viewport.y+100)
 	put_card_in_deck(instance)

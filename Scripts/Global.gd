@@ -22,11 +22,14 @@ onready var round_counter = 0
 	
 var player1
 var player2
+
 var played_card
+
 var active_player
 var inactive_player
 
 var hand
+var is_card_in_use:bool = false
 
 func _process(delta):
 	for i in range(1,card_in_focus_array.size()):

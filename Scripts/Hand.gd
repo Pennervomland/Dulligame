@@ -3,6 +3,12 @@ extends Node
 var cards = []
 var card_amount:int = 0
 
+var hand_player1_node
+var hand_player2_node
+
+var anim_hand1
+var anim_hand2
+
 export var maximal_card_amount:int = 7
 
 #define circle
@@ -10,12 +16,23 @@ export var circle_center:Vector2
 export var radius:float = 500
 export var diff_angle:float = 5
 
+func init_the_fucking_hand():
+	hand_player1_node = Global.player1.get_child(2)
+	hand_player2_node = Global.player2.get_child(2)
+	anim_hand1 = hand_player1_node.get_child(0)
+	anim_hand2 = hand_player2_node.get_child(0)
+
 func render_new_cards(var new_cards):
 	if (new_cards.size() <= maximal_card_amount):
 		cards = new_cards
 		card_amount = cards.size()
 		var params = calc_card_positions()
 		apply_new_card_positions(params[0],params[1], params[2])
+		if Global.active_player == Global.player1:
+			anim_hand1.play()
+		else:
+			anim_hand2.play()
+
 
 func apply_new_card_positions(var new_card_positions, var new_card_rotations, var new_card_z_indexes):
 	for card_index in range(0,card_amount):
@@ -76,20 +93,11 @@ func remove_card(var card_to_remove):
 	card_to_remove.old_position_in_hand = card_to_remove_index
 	
 	var params = calc_card_positions()
-	var old_card_positions = params[0]
-	var old_card_rotations = params[1]
-	var old_card_z_indexes = params[2]
 	
 	for i in range(card_to_remove_index,card_amount-1):
-		cards[i] = cards[i+1]
-		old_card_positions[i] = old_card_positions[i+1]
-		old_card_rotations[i] = old_card_rotations[i+1]
-		old_card_z_indexes[i] = old_card_z_indexes[i+1] 
+		cards[i] = cards[i+1] 
 		
 	cards[card_amount-1] = null
-	old_card_positions[card_amount-1] = null
-	old_card_rotations[card_amount-1] = null
-	old_card_z_indexes[card_amount-1] = null
 	
 	card_amount = card_amount - 1 
 
@@ -98,13 +106,30 @@ func remove_card(var card_to_remove):
 
 
 func add_card(var card_to_add):
-	pass
+	var i = card_amount
+	while i > card_to_add.old_position_in_hand : 
+		cards[i] = cards[i-1]
+		i = i - 1
+
+	cards[card_to_add.old_position_in_hand] = card_to_add
+	card_amount = card_amount + 1
+	
+	var params = calc_card_positions()
+	apply_new_card_positions(params[0],params[1], params[2])
 
 func get_index_in_card_array(var card):
 	for i in range(0,card_amount):
 		if (card == cards[i]):
 			return i
 	return -1
+
+
+func retrieve_cards():
+	var return_array = []
+	for card in cards:
+		if card!=null:
+			return_array.append(card)
+	return return_array
 
 func radian_of(var angle_in_degrees):
 	return angle_in_degrees * (PI / 180)

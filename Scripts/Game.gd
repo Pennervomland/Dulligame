@@ -2,7 +2,6 @@ extends Node2D
 
 var max_character_scene = preload("res://Scenes//MaxCharacter.tscn")
 
-signal player_turn_assign
 
 onready var position_player1 = $PositionPlayer1
 onready var position_player2 = $PositionPlayer2
@@ -29,10 +28,10 @@ func _ready():
 	generate_character(Global.selected_character_player2)
 	Global.active_player = Global.player1
 	Global.inactive_player = Global.player2
-	next_turn()
 	active_player = player1
 	inactive_player= player2
-	
+	$Hand.init_the_fucking_hand()
+	next_turn()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -54,17 +53,18 @@ func generate_character(var character_name):
 		Global.player1 = instance
 		character1.generate_cards_in_deck(5)
 		generated_character_count += 1
-		
 	else:
 		character2 =instance
 		character2.position = position_player2.position
 		character2.is_player1 = false
 		player2 = instance
 		Global.player2 = instance
-		character2.generate_cards_in_deck(2)
+		character2.generate_cards_in_deck(5)
 		
 
 func toggle_current_player():
+	Global.active_player.end_turn()
+	
 	if(Global.round_counter % 2 == 1):
 		print("round % = 1")
 		Global.active_player = Global.player1
@@ -74,14 +74,21 @@ func toggle_current_player():
 		Global.active_player = Global.player2
 		Global.inactive_player = Global.player1
 
+	Global.active_player.begin_turn()
+
 func next_turn():
 	print("Next turn")
 	trigger_permanent_effect()
 	Global.round_counter+=1
 	toggle_current_player()
-	emit_signal("player_turn_assign")
+	give_active_player_mana()
+	
 
-
+func give_active_player_mana():
+	var current_mana_of_active_player = Global.active_player.mana
+	var difference = 3 - current_mana_of_active_player
+	print("Apply ", difference, " mana")
+	Global.active_player.apply_mana_bonus(difference)
 
 func trigger_permanent_effect():
 	pass
