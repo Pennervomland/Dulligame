@@ -1,6 +1,7 @@
 extends Sprite
 
 var id
+var old_position_in_hand
 
 export var damage = 10
 export var mana_costs = 1
@@ -42,6 +43,7 @@ func _process(delta):
 		is_card_in_use = false
 		scale = Vector2(0.5,0.5)
 		position = start_pos
+		Global.hand.add_card(self)
 	
 
 

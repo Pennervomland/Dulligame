@@ -73,6 +73,7 @@ func calc_card_positions ():
 
 func remove_card(var card_to_remove):
 	var card_to_remove_index = get_index_in_card_array(card_to_remove)
+	card_to_remove.old_position_in_hand = card_to_remove_index
 	
 	var params = calc_card_positions()
 	var old_card_positions = params[0]
@@ -94,6 +95,10 @@ func remove_card(var card_to_remove):
 
 	params = calc_card_positions()
 	apply_new_card_positions(params[0],params[1], params[2])
+
+
+func add_card(var card_to_add):
+	pass
 
 func get_index_in_card_array(var card):
 	for i in range(0,card_amount):
