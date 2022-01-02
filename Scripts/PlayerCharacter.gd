@@ -137,7 +137,6 @@ func end_turn():
 
 func draw_card_from_deck():
 	var deck_size = deck.size()
-	print("Current deck size: ",deck_size)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var random_number = rng.randi_range(0,deck_size-1)

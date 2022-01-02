@@ -16,11 +16,16 @@ export var circle_center:Vector2
 export var radius:float = 500
 export var diff_angle:float = 5
 
+
+#set_as_toplevel benutzen!!!!!
 func init_the_fucking_hand():
 	hand_player1_node = Global.player1.get_child(2)
 	hand_player2_node = Global.player2.get_child(2)
+
+	
 	anim_hand1 = hand_player1_node.get_child(0)
 	anim_hand2 = hand_player2_node.get_child(0)
+	
 
 func render_new_cards(var new_cards):
 	if (new_cards.size() <= maximal_card_amount):
