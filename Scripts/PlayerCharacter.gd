@@ -20,6 +20,7 @@ var discard_pile = []
 
 onready var hp_bar = $Control/ProgressBar
 onready var armor_label = $Control/ArmorSymbol/ArmorLabel
+onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
 
 var dead = false
 
@@ -30,6 +31,10 @@ func _ready():
 	hp_bar.value = hp
 	armor_label.text = str(armor)
 	player_hand_node = $PlayerHand
+	
+	var viewport:Vector2 = get_viewport().get_visible_rect().size
+	player_hand_node.position = Vector2(0,0)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -122,6 +127,7 @@ func begin_turn():
 	for i in range(0,difference):
 		draw_card_from_deck()
 	Global.hand.render_new_cards(player_hand)
+	player_hand_node_animator.play("MovePlayerHandUp")
 	
 func end_turn():
 	if !is_player1:

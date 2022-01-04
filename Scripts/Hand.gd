@@ -41,7 +41,7 @@ func render_new_cards(var new_cards):
 
 func apply_new_card_positions(var new_card_positions, var new_card_rotations, var new_card_z_indexes):
 	for card_index in range(0,card_amount):
-		cards[card_index].position = new_card_positions[card_index]
+		cards[card_index].global_position = new_card_positions[card_index]
 		cards[card_index].rotation_degrees = new_card_rotations[card_index]
 		cards[card_index].z_index = new_card_z_indexes[card_index]
 
