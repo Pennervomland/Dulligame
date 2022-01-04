@@ -75,13 +75,15 @@ func toggle_current_player():
 		Global.active_player = Global.player2
 		Global.inactive_player = Global.player1
 
+	var label_text = str(Global.round_counter,": ",Global.active_player.player_name)
+	Global.ui.set_round_count_label_text(label_text)
 	Global.active_player.begin_turn()
 
 func next_turn():
 	print("Next turn")
 	trigger_permanent_effect()
 	Global.round_counter+=1
-	Global.ui.set_round_counter_label_text(Global.round_counter)
+	
 	toggle_current_player()
 	give_active_player_mana()
 	
@@ -98,11 +100,19 @@ func trigger_permanent_effect():
 
 func end_game(var losing_player):
 	print("End game")
-	if Global.player1 == losing_player:
-		Global.ui.set_round_count_label_text("Player 1 lost")
-		print("Player1 lost")
+	
+	var winning_player
+	if losing_player == Global.player1:
+		winning_player = Global.player2
 	else:
-		Global.ui.set_round_count_label_text("Player 2 lost")
-		print("Player 2 lost")
+		winning_player = Global.player1
+	
+	winning_player.hide_ui()
+	
+	
+	var label_text = str(losing_player.player_name," lost!")
+	Global.ui.set_round_count_label_text(label_text)
+	Global.ui.display_end_buttons()
+	
 
 

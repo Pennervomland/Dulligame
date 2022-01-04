@@ -24,6 +24,7 @@ onready var armor_label = $Control/ArmorSymbol/ArmorLabel
 onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
 
 var dead = false
+var player_name
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,8 +42,7 @@ func apply_damage(var damage):
 	hp = hp - damage
 	if (hp <= 0):
 		hp = 0
-		player_ui_node.visible = false
-		player_hand_node.visible = false
+		hide_ui()
 		dead = true
 		#rotation = 90
 		Global.game.end_game(self)
@@ -54,7 +54,11 @@ func apply_damage(var damage):
 		print("Player2 Hp abgezogen")
 		Global.hp_player2 = hp
 	hp_bar.value = hp
-	
+
+func hide_ui():
+	player_ui_node.visible = false
+	player_hand_node.visible = false
+
 
 func apply_healing(var healing):
 	hp = hp + healing

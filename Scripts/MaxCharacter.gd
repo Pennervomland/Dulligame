@@ -4,7 +4,7 @@ var max_card = preload("res://Scenes//CardMax.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	player_name = "Maxerooo"
 
 
 func generate_cards_in_deck(var amount: int):
