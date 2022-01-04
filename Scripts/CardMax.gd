@@ -12,7 +12,7 @@ func _process(delta):
 		scale = Vector2(1,1)
 		
 		var viewport:Vector2 = get_viewport().get_visible_rect().size 
-		position = Vector2(viewport.x/2,viewport.y/2)
+		global_position = Vector2(viewport.x/2,viewport.y/2)
 		#Activates the card
 		if(Input.is_action_just_pressed("LeftMB") && is_mouse_on_card && mana_costs <= Global.active_player.mana):
 			print(Global.active_player)
