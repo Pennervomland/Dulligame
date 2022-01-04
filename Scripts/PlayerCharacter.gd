@@ -18,6 +18,7 @@ var player_hand_node
 var discard_pile_size
 var discard_pile = []
 
+onready var player_ui_node = $Control
 onready var hp_bar = $Control/ProgressBar
 onready var armor_label = $Control/ArmorSymbol/ArmorLabel
 onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
@@ -36,16 +37,16 @@ func _ready():
 	player_hand_node.position = Vector2(0,0)
 	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if(hp_bar.value <= 0 && dead == false):
-		rotation = 90
-		dead = true
-		
-
 func apply_damage(var damage):
 	hp = hp - damage
+	if (hp <= 0):
+		hp = 0
+		player_ui_node.visible = false
+		player_hand_node.visible = false
+		dead = true
+		#rotation = 90
+		Global.game.end_game(self)
+		
 	if is_player1:
 		print("Player1 Hp abgezogen")
 		Global.hp_player1 = hp

@@ -22,6 +22,8 @@ onready var round_counter = 0
 	
 var player1
 var player2
+var game
+var ui
 
 var played_card
 

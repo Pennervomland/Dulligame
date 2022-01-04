@@ -22,6 +22,7 @@ var temp_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.game = self
 	Global.hand = $Hand
 	$UI.connect("end_turn_signal",self,"next_turn")
 	generate_character(Global.selected_character_player1)
@@ -80,6 +81,7 @@ func next_turn():
 	print("Next turn")
 	trigger_permanent_effect()
 	Global.round_counter+=1
+	Global.ui.set_round_counter_label_text(Global.round_counter)
 	toggle_current_player()
 	give_active_player_mana()
 	
@@ -92,3 +94,15 @@ func give_active_player_mana():
 
 func trigger_permanent_effect():
 	pass
+
+
+func end_game(var losing_player):
+	print("End game")
+	if Global.player1 == losing_player:
+		Global.ui.set_round_count_label_text("Player 1 lost")
+		print("Player1 lost")
+	else:
+		Global.ui.set_round_count_label_text("Player 2 lost")
+		print("Player 2 lost")
+
+
