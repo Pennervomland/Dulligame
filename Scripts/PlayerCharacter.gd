@@ -24,6 +24,7 @@ onready var player_ui_node = $Control
 onready var hp_bar = $Control/ProgressBar
 onready var armor_label = $Control/ArmorSymbol/ArmorLabel
 onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
+onready var face = $Face
 
 var dead = false
 var player_name
@@ -219,3 +220,7 @@ func generate_attack_card_in_deck():
 	instance.position = Vector2(-100,viewport.y+100)
 	instance.init(self)
 	put_card_in_deck(instance)
+
+
+func rotate_face():
+	face.scale.x = -face.scale.x

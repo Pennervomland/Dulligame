@@ -75,6 +75,7 @@ func generate_character(var character_name):
 		character2 =instance
 		character2.position = position_player2.position
 		character2.is_player1 = false
+		character2.rotate_face()
 		player2 = instance
 		Global.player2 = instance
 		character2.generate_cards_in_deck(5)

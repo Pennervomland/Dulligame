@@ -9,5 +9,5 @@ script = ExtResource( 2 )
 
 [node name="Face" parent="." index="0"]
 position = Vector2( -4, -142.667 )
-scale = Vector2( 0.726934, 0.468219 )
+scale = Vector2( -0.727, 0.468 )
 texture = ExtResource( 3 )
