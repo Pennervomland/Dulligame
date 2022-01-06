@@ -27,8 +27,8 @@ var dead = false
 var player_name
 
 onready var attack_card = preload("res://Scenes/AttackCard.tscn")
-onready var healing_card = preload("res://Scenes/AttackCard.tscn")
-onready var mana_card = preload("res://Scenes/AttackCard.tscn")
+onready var healing_card = preload("res://Scenes/HealingCard.tscn")
+onready var mana_card = preload("res://Scenes/ManaCard.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

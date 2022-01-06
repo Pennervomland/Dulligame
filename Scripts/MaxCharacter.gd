@@ -9,7 +9,7 @@ func _ready():
 
 func generate_cards_in_deck(var amount: int):
 	for i in range(0,amount):
-		generate_attack_card_in_deck()
+		generate_healing_card_in_deck()
 		
 	#dreckig
 	#if is_player1:
