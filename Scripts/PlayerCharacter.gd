@@ -5,9 +5,9 @@ export var max_cards_on_hand:int = 5
 
 var start_hp
 
-onready var hp = 100
-onready var armor = 0 
-onready var mana = 3
+export var hp = 100
+export var armor = 0 
+export var mana = 3
 
 var is_player1:bool
 
@@ -46,7 +46,15 @@ func _ready():
 	
 
 func apply_damage(var damage):
-	hp = hp - damage
+	var damage_dealt = damage - armor
+	if (damage_dealt > 0):
+		hp = hp - damage_dealt
+	
+	if damage < armor:	
+		armor = armor - damage
+	else:
+		armor = 0
+		
 	if (hp <= 0):
 		hp = 0
 		hide_ui()

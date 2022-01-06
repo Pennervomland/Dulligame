@@ -45,12 +45,12 @@ font_data = ExtResource( 1 )
 script = ExtResource( 6 )
 
 [node name="EndTurnButton" type="Button" parent="."]
-margin_left = 471.0
+margin_left = 459.0
 margin_top = 3.0
-margin_right = 483.0
-margin_bottom = 23.0
+margin_right = 544.0
+margin_bottom = 29.0
 custom_fonts/font = SubResource( 5 )
-text = "END TURN"
+text = "Beende Runde"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -214,10 +214,10 @@ z_index = -1
 texture = ExtResource( 4 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_left = 482.0
-margin_top = 37.0
-margin_right = 522.0
-margin_bottom = 123.0
+margin_left = 478.0
+margin_top = 36.0
+margin_right = 518.0
+margin_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 __meta__ = {
@@ -240,12 +240,12 @@ __meta__ = {
 }
 
 [node name="MainMenuButton" type="Button" parent="."]
-margin_left = 379.0
-margin_top = 178.0
-margin_right = 635.0
-margin_bottom = 270.0
+margin_left = 372.0
+margin_top = 177.0
+margin_right = 647.0
+margin_bottom = 269.0
 custom_fonts/font = SubResource( 9 )
-text = "Main Menu"
+text = "Hauptmenü"
 __meta__ = {
 "_edit_use_anchors_": false
 }
