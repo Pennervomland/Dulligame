@@ -14,6 +14,7 @@ var is_card_in_use: bool    # When card is in use meaning another left click wou
 var is_card_in_focus: bool  # When mouse is over the card in players hand
 
 onready var card_image = $CardImage
+onready var card_description = $CardDescription
 
 onready var start_pos = position # Currently a position whereever... Subject to change
 
