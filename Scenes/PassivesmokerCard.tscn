@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/cards/specialCards/Passivraucher.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/PassivesmokerCard.gd" type="Script" id=3]
+
+[node name="PassivesmokerCard" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="CardImage" parent="." index="3"]
+position = Vector2( 2, -76 )
+scale = Vector2( 0.248712, 0.248712 )
+texture = ExtResource( 1 )

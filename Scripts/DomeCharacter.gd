@@ -1,9 +1,22 @@
 extends "res://Scripts/PlayerCharacter.gd"
 
+var prev_round_damage:int = 0
+var current_round:int
+var prev_round:int
 
 func _ready():
 	player_name = "Dome"
+	Global.ui.connect("end_turn_signal", self, "prev_round_damage_calc")
 
+func _process(delta):
+	pass
+
+func apply_damage(var damage):
+	.apply_damage(damage)
+	prev_round_damage += damage
+
+func prev_round_damage_calc():
+	pass
 
 func generate_cards_in_deck(var amount: int):
 	pass
