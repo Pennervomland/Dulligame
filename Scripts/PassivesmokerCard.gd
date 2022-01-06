@@ -1,11 +1,18 @@
 extends "res://Scripts/Card.gd"
 
-
+var smoker_damage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	Global.dome_character.connect("send_stored_damage", self, "set_smoker_damage")
+	var card_text = str("Verursache ",smoker_damage," Schaden")
+	card_description.text = card_text
 
+func set_smoker_damage():
+	if Global.active_player == Global.dome_character:
+		smoker_damage = Global.active_player.stored_damage
+		var card_text = str("Verursache ",smoker_damage*0.8," Schaden")
+		card_description.text = card_text
 
 func _process(delta):
 	#Moves card in center and makes it bigger if in use
@@ -27,5 +34,7 @@ func _process(delta):
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
 	card_basic_effect()
+	Global.inactive_player.apply_damage(smoker_damage*0.8)
+	Global.active_player.stored_damage = 0
 	discard_card()
 	

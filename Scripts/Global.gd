@@ -19,11 +19,12 @@ onready var mouse_on_cards_amount:int = 0
 onready var mouse_on_multiple_cards:bool = false
 
 onready var round_counter = 0
-	
+
 var player1
 var player2
 var game
 var ui
+var dome_character
 
 var played_card
 
