@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/cards/seperator.png" type="Texture" id=4]
 [ext_resource path="res://assets/cards/rand.png" type="Texture" id=5]
 
-[node name="Card" instance=ExtResource( 1 )]
+[node name="AttackCard" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Filling" parent="." index="1"]
