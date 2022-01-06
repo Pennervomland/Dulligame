@@ -98,12 +98,13 @@ func toggle_current_player():
 	Global.active_player.begin_turn()
 
 func next_turn():
-	print("Next turn")
-	trigger_permanent_effect()
-	Global.round_counter+=1
-	
-	toggle_current_player()
-	give_active_player_mana()
+	if !Global.is_card_in_use:
+		trigger_permanent_effect()
+		Global.round_counter+=1
+		toggle_current_player()
+		give_active_player_mana()
+	else:
+		Global.ui.set_round_count_label_text("Karte weg!")
 	
 
 func give_active_player_mana():

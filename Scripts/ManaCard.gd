@@ -18,7 +18,7 @@ func _ready():
 		card_image.texture = dome_face
 	elif associated_player.player_name == "Marc":
 		card_image.texture = marc_face
-	var card_text = str("Regenerates ",mana_regeneration, " Mana")
+	var card_text = str("Regeneriert ",mana_regeneration, " Mana")
 	card_description.text = card_text
 
 func _process(delta):
