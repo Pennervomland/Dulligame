@@ -12,6 +12,9 @@ onready var salt_bar = $Control/SaltBar
 onready var bath_salt_card = preload("res://Scenes/BathSaltCard.tscn")
 onready var salt_shaker_card = preload("res://Scenes/SaltShakerCard.tscn")
 
+export var ragequit_hp_difference = 30
+export var salt_after_damage = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_name = "Marc"
@@ -39,6 +42,12 @@ func generate_cards_in_deck(var amount: int):
 	generate_attack_card_in_deck()
 	generate_special_cards_in_deck()
 	
+
+func apply_damage(var damage):
+	.apply_damage(damage)
+	if enemy.hp - hp >= ragequit_hp_difference:
+		Global.game.end_game(self)
+	add_salt(salt_after_damage)
 	
 # das var i kann entfernt werden. einfach nur damit n bssl platz zwischen karten vorhanden ist
 func generate_special_cards_in_deck():
