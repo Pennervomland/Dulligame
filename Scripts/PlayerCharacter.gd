@@ -32,6 +32,7 @@ var player_name
 onready var attack_card = preload("res://Scenes/AttackCard.tscn")
 onready var healing_card = preload("res://Scenes/HealingCard.tscn")
 onready var mana_card = preload("res://Scenes/ManaCard.tscn")
+onready var armor_card = preload("res://Scenes/ArmorCard.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -207,6 +208,14 @@ func generate_mana_card_in_deck():
 
 func generate_healing_card_in_deck():
 	var instance = healing_card.instance()
+	#get_tree().root.get_child(1).get_child(3).add_child(instance)
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	instance.position = Vector2(-100,viewport.y+100)
+	instance.init(self)
+	put_card_in_deck(instance)
+	
+func generate_armor_card_in_deck():
+	var instance = armor_card.instance()
 	#get_tree().root.get_child(1).get_child(3).add_child(instance)
 	var viewport:Vector2 = get_viewport().get_visible_rect().size 
 	instance.position = Vector2(-100,viewport.y+100)

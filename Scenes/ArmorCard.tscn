@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/ArmorCard.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=2]
+
+[node name="ArmorCard" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+damage = 0
+healing = 0
+mana_regeneration = 0

@@ -11,9 +11,9 @@ func generate_cards_in_deck(var amount: int):
 	generate_attack_card_in_deck()
 	generate_healing_card_in_deck()
 	generate_mana_card_in_deck()
-	generate_attack_card_in_deck()
-	generate_attack_card_in_deck()
-	generate_attack_card_in_deck()
+	generate_armor_card_in_deck()
+	generate_armor_card_in_deck()
+	generate_armor_card_in_deck()
 		
 	#dreckig
 	#if is_player1:
