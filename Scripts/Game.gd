@@ -1,7 +1,10 @@
 extends Node2D
 
 var max_character_scene = preload("res://Scenes//MaxCharacter.tscn")
-
+var fabi_character_scene = preload("res://Scenes//FabiCharacter.tscn")
+var nils_character_scene = preload("res://Scenes//NilsCharacter.tscn")
+var marc_character_scene = preload("res://Scenes//MarcCharacter.tscn")
+var dome_character_scene = preload("res://Scenes//DomeCharacter.tscn")
 
 onready var position_player1 = $PositionPlayer1
 onready var position_player2 = $PositionPlayer2
@@ -46,6 +49,20 @@ func generate_character(var character_name):
 	if(character_name == "Max"):
 		instance = max_character_scene.instance()
 		add_child(instance)
+	elif(character_name == "Fabi"):
+		instance = fabi_character_scene.instance()
+		add_child(instance)
+	elif(character_name == "Nils"):
+		instance = nils_character_scene.instance()
+		add_child(instance)
+	elif(character_name == "Marc"):
+		instance = marc_character_scene.instance()
+		add_child(instance)
+	elif(character_name == "Dome"):
+		instance = dome_character_scene.instance()
+		add_child(instance)
+		
+		
 	if(generated_character_count==0):
 		character1 = instance
 		character1.position = position_player1.position
