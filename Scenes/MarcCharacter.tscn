@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/PlayerCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/MarcCharacter.gd" type="Script" id=2]
 [ext_resource path="res://assets/cards/salzi.png" type="Texture" id=3]
+[ext_resource path="res://assets/cards/specialCards/salzbar.png" type="Texture" id=4]
 
 [node name="MarcCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+max_salt_level = 10
 
 [node name="Face" parent="." index="0"]
 position = Vector2( -3.99994, -150.667 )
@@ -19,6 +21,7 @@ margin_right = 488.667
 margin_bottom = 109.0
 rect_scale = Vector2( 0.2, 0.2 )
 value = 100.0
+texture_progress = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

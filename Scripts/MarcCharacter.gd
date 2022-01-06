@@ -1,19 +1,19 @@
 extends "res://Scripts/PlayerCharacter.gd"
 
 var salt_level = 0
-export var max_salt_level = 100
-export var saltstorm_damage = 20
+export var max_salt_level:int = 100
+export var saltstorm_damage:int = 20
 
-export var bath_salt_card_amount = 2
-export var salt_shaker_card_amount = 2 
+export var bath_salt_card_amount:int = 2
+export var salt_shaker_card_amount:int = 2 
 
 onready var salt_bar = $Control/SaltBar
 
 onready var bath_salt_card = preload("res://Scenes/BathSaltCard.tscn")
 onready var salt_shaker_card = preload("res://Scenes/SaltShakerCard.tscn")
 
-export var ragequit_hp_difference = 30
-export var salt_after_damage = 1
+export var ragequit_hp_difference:int = 30
+export var salt_after_damage:int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
