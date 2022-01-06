@@ -20,6 +20,7 @@ func _ready():
 	elif associated_player.player_name == "Marc":
 		card_image.texture = marc_face
 
+
 func _process(delta):
 	#Moves card in center and makes it bigger if in use
 	if(is_card_in_use):
