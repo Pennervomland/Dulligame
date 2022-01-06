@@ -8,6 +8,7 @@ var dome_face = preload("res://assets/cards/dome.png")
 var marc_face = preload("res://assets/cards/marc.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	card_description.text = str("Heile ", healing,  " Leben")
 	card_image.modulate = Color(0.2,1,0.2)
 	if associated_player.player_name == "Max":
 		card_image.texture = max_face
