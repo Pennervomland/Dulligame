@@ -1,10 +1,10 @@
 extends "res://Scripts/Card.gd"
 
 var max_face = preload("res://assets/cards/maxeroo.png")
-var fabi_face = preload("res://assets/cards/fabi.png")
-var nils_face = preload("res://assets/cards/steffennils.png")
+var fabi_face = preload("res://assets/cards/fabian.png")
+var nils_face = preload("res://assets/cards/nils.png")
 var dome_face = preload("res://assets/cards/dome.png")
-var marc_face = preload("res://assets/cards/salzi.png")
+var marc_face = preload("res://assets/cards/marc.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	card_image.modulate = Color(1,0.2,0.2)
