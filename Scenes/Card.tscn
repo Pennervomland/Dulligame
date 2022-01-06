@@ -49,7 +49,7 @@ position = Vector2( 0.000286102, 15.76 )
 scale = Vector2( 0.995705, 0.675434 )
 texture = ExtResource( 3 )
 
-[node name="Image" type="Sprite" parent="."]
+[node name="CardImage" type="Sprite" parent="."]
 position = Vector2( 4, -80 )
 scale = Vector2( 0.218502, 0.218502 )
 

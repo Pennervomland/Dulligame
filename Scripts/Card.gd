@@ -1,7 +1,7 @@
 extends Sprite
 
-var id
 var old_position_in_hand
+var associated_player
 
 export var damage = 10
 export var mana_costs = 1
@@ -13,7 +13,7 @@ var is_mouse_on_card: bool  # When mouse is on the card
 var is_card_in_use: bool    # When card is in use meaning another left click would use it
 var is_card_in_focus: bool  # When mouse is over the card in players hand
 
-var mouse_pos = get_global_mouse_position()
+onready var card_image = $CardImage
 
 onready var start_pos = position # Currently a position whereever... Subject to change
 
@@ -24,8 +24,8 @@ func _ready():
 	is_card_in_use = false
 	is_card_in_focus = false
 
-func init(var new_id):
-	id = new_id
+func init(var associated_player):
+	self.associated_player = associated_player
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
