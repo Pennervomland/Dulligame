@@ -3,6 +3,8 @@ extends Sprite
 onready var game = get_tree().root.get_child(1)
 export var max_cards_on_hand:int = 5
 
+var start_hp
+
 onready var hp = 100
 onready var armor = 0 
 onready var mana = 3
@@ -39,6 +41,7 @@ func _ready():
 	
 	var viewport:Vector2 = get_viewport().get_visible_rect().size
 	player_hand_node.position = Vector2(0,0)
+	start_hp = hp
 	
 
 func apply_damage(var damage):
@@ -65,6 +68,8 @@ func hide_ui():
 
 func apply_healing(var healing):
 	hp = hp + healing
+	if hp > start_hp:
+		hp = start_hp
 	if is_player1:
 		Global.hp_player1 = hp
 	else:
