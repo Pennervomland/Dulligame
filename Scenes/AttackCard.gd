@@ -3,6 +3,7 @@ extends "res://Scripts/Card.gd"
 var max_face = preload("res://assets/cards/maxeroo.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	if associated_player.player_name == "Max":
 		card_image.texture = max_face
 

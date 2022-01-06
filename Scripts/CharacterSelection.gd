@@ -17,6 +17,34 @@ func _on_MaxButton_pressed():
 		get_tree().change_scene("res://Scenes//Testroom.tscn")
 
 
+func _on_MarcButton_pressed():
+	select_character("Marc")
+	change_player()
+	if(characters_selected==2):
+		get_tree().change_scene("res://Scenes//Testroom.tscn")
+
+
+func _on_FabiButton_pressed():
+	select_character("Fabi")
+	change_player()
+	if(characters_selected==2):
+		get_tree().change_scene("res://Scenes//Testroom.tscn")
+
+
+func _on_DomeButton_pressed():
+	select_character("Dome")
+	change_player()
+	if(characters_selected==2):
+		get_tree().change_scene("res://Scenes//Testroom.tscn")
+
+
+func _on_NilsButton_pressed():
+	select_character("Nils")
+	change_player()
+	if(characters_selected==2):
+		get_tree().change_scene("res://Scenes//Testroom.tscn")
+
+
 func select_character(var character_name:String):
 	if(characters_selected==0):
 		Global.selected_character_player1 = character_name

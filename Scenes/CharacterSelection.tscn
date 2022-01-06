@@ -29,21 +29,69 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 78.0
-margin_top = 24.0
-margin_right = 365.0
-margin_bottom = 123.0
+margin_left = 71.0
+margin_top = 8.0
+margin_right = 953.0
+margin_bottom = 163.0
 custom_fonts/font = SubResource( 1 )
 text = "Character Selection"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NilsButton" type="Button" parent="."]
+margin_left = 370.0
+margin_top = 407.0
+margin_right = 613.0
+margin_bottom = 562.0
+rect_pivot_offset = Vector2( -468, -500 )
+custom_fonts/font = SubResource( 2 )
+text = "Nils"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DomeButton" type="Button" parent="."]
+margin_left = 84.0
+margin_top = 406.0
+margin_right = 327.0
+margin_bottom = 561.0
+rect_pivot_offset = Vector2( -468, -500 )
+custom_fonts/font = SubResource( 2 )
+text = "Dome"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FabiButton" type="Button" parent="."]
+margin_left = 655.0
+margin_top = 229.0
+margin_right = 898.0
+margin_bottom = 384.0
+rect_pivot_offset = Vector2( -796, -379 )
+custom_fonts/font = SubResource( 2 )
+text = "Marc"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarcButton" type="Button" parent="."]
+margin_left = 369.0
+margin_top = 230.0
+margin_right = 612.0
+margin_bottom = 385.0
+rect_pivot_offset = Vector2( -796, -379 )
+custom_fonts/font = SubResource( 2 )
+text = "Marc"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MaxButton" type="Button" parent="."]
-margin_left = 105.0
-margin_top = 353.0
-margin_right = 348.0
-margin_bottom = 508.0
+margin_left = 85.0
+margin_top = 230.0
+margin_right = 328.0
+margin_bottom = 385.0
 rect_pivot_offset = Vector2( -796, -379 )
 custom_fonts/font = SubResource( 2 )
 text = "MAX"
@@ -52,10 +100,10 @@ __meta__ = {
 }
 
 [node name="PlayerText" type="RichTextLabel" parent="."]
-margin_left = 427.0
-margin_top = 183.0
-margin_right = 611.0
-margin_bottom = 277.0
+margin_left = 409.0
+margin_top = 135.0
+margin_right = 593.0
+margin_bottom = 229.0
 custom_fonts/normal_font = SubResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[color=blue]Player 1[/color]"
@@ -64,4 +112,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="NilsButton" to="." method="_on_NilsButton_pressed"]
+[connection signal="pressed" from="DomeButton" to="." method="_on_DomeButton_pressed"]
+[connection signal="pressed" from="FabiButton" to="." method="_on_FabiButton_pressed"]
+[connection signal="pressed" from="MarcButton" to="." method="_on_MarcButton_pressed"]
 [connection signal="pressed" from="MaxButton" to="." method="_on_MaxButton_pressed"]
