@@ -70,7 +70,7 @@ margin_right = 898.0
 margin_bottom = 384.0
 rect_pivot_offset = Vector2( -796, -379 )
 custom_fonts/font = SubResource( 2 )
-text = "Marc"
+text = "Fabi"
 __meta__ = {
 "_edit_use_anchors_": false
 }

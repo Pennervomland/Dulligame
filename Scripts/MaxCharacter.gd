@@ -9,7 +9,7 @@ func _ready():
 
 func generate_cards_in_deck(var amount: int):
 	for i in range(0,amount):
-		generate_max_card_in_deck(i)
+		generate_attack_card_in_deck()
 		
 	#dreckig
 	#if is_player1:
@@ -23,3 +23,6 @@ func generate_max_card_in_deck(var i):
 	instance.position = Vector2(-100,viewport.y+100)
 	instance.init(self)
 	put_card_in_deck(instance)
+	
+
+

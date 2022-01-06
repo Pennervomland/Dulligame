@@ -26,6 +26,9 @@ onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
 var dead = false
 var player_name
 
+onready var attack_card = preload("res://Scenes/AttackCard.tscn")
+onready var healing_card = preload("res://Scenes/AttackCard.tscn")
+onready var mana_card = preload("res://Scenes/AttackCard.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -188,3 +191,26 @@ func put_card_to_discard_pile(var card):
 		Global.deck_size_player2 = deck_size
 		
 
+func generate_mana_card_in_deck():
+	var instance = mana_card.instance()
+	#get_tree().root.get_child(1).get_child(3).add_child(instance)
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	instance.position = Vector2(-100,viewport.y+100)
+	instance.init(self)
+	put_card_in_deck(instance)
+
+func generate_healing_card_in_deck():
+	var instance = healing_card.instance()
+	#get_tree().root.get_child(1).get_child(3).add_child(instance)
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	instance.position = Vector2(-100,viewport.y+100)
+	instance.init(self)
+	put_card_in_deck(instance)
+
+func generate_attack_card_in_deck():
+	var instance = attack_card.instance()
+	#get_tree().root.get_child(1).get_child(3).add_child(instance)
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	instance.position = Vector2(-100,viewport.y+100)
+	instance.init(self)
+	put_card_in_deck(instance)
