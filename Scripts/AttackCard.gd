@@ -39,6 +39,6 @@ func _process(delta):
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
 	card_basic_effect()
-	Global.inactive_player.apply_damage(10)
+	Global.inactive_player.apply_damage(damage)
 	discard_card()
 	
