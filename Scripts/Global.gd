@@ -25,6 +25,7 @@ var player2
 var game
 var ui
 var dome_character
+var dome_character2
 
 var played_card
 

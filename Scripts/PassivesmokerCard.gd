@@ -1,15 +1,23 @@
 extends "res://Scripts/Card.gd"
 
-var smoker_damage = 0
+var smoker_damage:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.dome_character.connect("send_stored_damage", self, "set_smoker_damage")
+	if Global.dome_character2 != null:
+		Global.dome_character2.connect("send_stored_damage", self, "set_smoker_damage")
 	var card_text = str("Verursache ",smoker_damage," Schaden")
 	card_description.text = card_text
 
 func set_smoker_damage():
 	if Global.active_player == Global.dome_character:
+		print("dome hier")
+		smoker_damage = Global.active_player.stored_damage
+		var card_text = str("Verursache ",smoker_damage*0.8," Schaden")
+		card_description.text = card_text
+	elif Global.active_player == Global.dome_character2:
+		print("dome2 hier")
 		smoker_damage = Global.active_player.stored_damage
 		var card_text = str("Verursache ",smoker_damage*0.8," Schaden")
 		card_description.text = card_text

@@ -8,10 +8,12 @@ signal send_stored_damage
 onready var passive_smoker_card = preload("res://Scenes/PassivesmokerCard.tscn")
 
 func _ready():
-	Global.dome_character = self
+	if Global.dome_character != null:
+		Global.dome_character2 = self
+	else:
+		Global.dome_character = self
 	player_name = "Dome"
-	Global.ui.connect("end_turn_signal", self, "reset_stored_damage")
-	Global.ui.connect("end_turn_signal", self, "deal_self_damage")
+	Global.ui.connect("end_turn_signal", self, "dome_passive")
 
 func _process(delta):
 	pass
@@ -22,18 +24,18 @@ func _process(delta):
 
 func apply_damage(var damage):
 	.apply_damage(damage)
+	print("auaua")
 	prev_round_damage += damage
 
-func deal_self_damage():
-	if self == Global.inactive_player:
-		apply_damage(5)
 
-func reset_stored_damage():
+
+func dome_passive():
 	if self == Global.active_player:
 		stored_damage = prev_round_damage
 		prev_round_damage = 0
 	else:
 		stored_damage = 0
+		apply_damage(5)
 	emit_signal("send_stored_damage")
 
 func generate_cards_in_deck(var amount: int):
