@@ -43,7 +43,7 @@ tracks/0/keys = {
 }
 
 [node name="PlayerCharacter" type="Sprite"]
-position = Vector2( 255, 284 )
+position = Vector2( 254, 284 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 script = ExtResource( 1 )

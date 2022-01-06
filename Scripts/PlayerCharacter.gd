@@ -20,6 +20,8 @@ var player_hand_node
 var discard_pile_size
 var discard_pile = []
 
+var enemy
+export var ragequit_hp_difference = 30
 
 onready var player_ui_node = $Control
 onready var hp_bar = $Control/ProgressBar
@@ -45,7 +47,10 @@ func _ready():
 	var viewport:Vector2 = get_viewport().get_visible_rect().size
 	player_hand_node.position = Vector2(0,0)
 	start_hp = hp
-	
+	if is_player1:
+		enemy = Global.player2
+	else:
+		enemy = Global.player1
 
 func apply_damage(var damage):
 	var damage_dealt = damage - armor
@@ -73,6 +78,9 @@ func apply_damage(var damage):
 		Global.hp_player2 = hp
 		Global.armor_player2 = armor
 	hp_bar.value = hp
+	if player_name == "Marc" and enemy.hp - hp >= ragequit_hp_difference:
+		Global.game.end_game(self)
+	
 
 func hide_ui():
 	player_ui_node.visible = false
