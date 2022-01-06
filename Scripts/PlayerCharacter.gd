@@ -20,6 +20,7 @@ var player_hand_node
 var discard_pile_size
 var discard_pile = []
 
+
 onready var player_ui_node = $Control
 onready var hp_bar = $Control/ProgressBar
 onready var armor_label = $Control/ArmorSymbol/ArmorLabel
@@ -55,7 +56,7 @@ func apply_damage(var damage):
 		armor = armor - damage
 	else:
 		armor = 0
-		
+	armor_label.text = str(armor)
 	if (hp <= 0):
 		hp = 0
 		hide_ui()
@@ -66,9 +67,11 @@ func apply_damage(var damage):
 	if is_player1:
 		print("Player1 Hp abgezogen")
 		Global.hp_player1 = hp
+		Global.armor_player1 = armor
 	else:
 		print("Player2 Hp abgezogen")
 		Global.hp_player2 = hp
+		Global.armor_player2 = armor
 	hp_bar.value = hp
 
 func hide_ui():
