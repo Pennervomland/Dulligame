@@ -104,7 +104,7 @@ func apply_healing(var healing):
 			Global.hp_player2 = hp
 		hp_bar.value = hp
 	else:
-		Global.ui.set_round_count_text("Du wurdest versalzt!")
+		Global.ui.set_round_count_label_text("Versalzt")
 
 func apply_mana_costs(var mana_costs):
 	mana = mana - mana_costs
