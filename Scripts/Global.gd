@@ -24,8 +24,13 @@ var player1
 var player2
 var game
 var ui
+
 var dome_character
 var dome_character2
+var is_bier_buff_active:bool
+var is_bier_buff2_active:bool
+var round_bier_buff_ends:int
+var round_bier_buff2_ends:int
 
 var played_card
 

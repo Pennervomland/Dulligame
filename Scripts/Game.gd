@@ -25,6 +25,7 @@ var temp_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	Global.game = self
 	Global.hand = $Hand
 	$UI.connect("end_turn_signal",self,"next_turn")

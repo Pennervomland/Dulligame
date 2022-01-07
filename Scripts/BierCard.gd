@@ -7,6 +7,10 @@ func _ready():
 
 
 func _process(delta):
+	if Global.round_bier_buff_ends == Global.round_counter:
+		Global.is_bier_buff_active = false
+	if Global.round_bier_buff2_ends == Global.round_counter:
+		Global.is_bier_buff_active = false
 	#Moves card in center and makes it bigger if in use
 	if(is_card_in_use):
 		scale = Vector2(1,1)
@@ -26,4 +30,10 @@ func _process(delta):
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
 	card_basic_effect()
+	if Global.active_player == Global.dome_character:
+		Global.is_bier_buff_active = true
+		Global.round_bier_buff_ends = Global.round_counter + 3
+	if Global.active_player == Global.dome_character2:
+		Global.is_bier_buff2_active = true
+		Global.round_bier_buff2_ends = Global.round_counter + 3
 	discard_card()
