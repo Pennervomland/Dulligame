@@ -2,7 +2,7 @@ extends "res://Scripts//PlayerCharacter.gd"
 
 var afk_card = preload("res://Scenes/AFKCard.tscn")
 var nicos_help_card = preload("res://Scenes/NicosHelpCard.tscn")
-var jaegermeister_card = preload("res://Scenes/NicosHelpCard.tscn") 
+var jaegermeister_card = preload("res://Scenes/JaegermeisterCard.tscn") 
 
 onready var nico_damage_label = $Nico/NicoDamageLabel
 onready var nico_sprite = $Nico
