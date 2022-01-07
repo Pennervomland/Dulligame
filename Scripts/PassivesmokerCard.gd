@@ -1,6 +1,7 @@
 extends "res://Scripts/Card.gd"
 
 var smoker_damage:int = 0
+var bier_buff_multi:int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,13 +13,23 @@ func _ready():
 
 func set_smoker_damage():
 	if Global.active_player == Global.dome_character:
-		print("dome hier")
-		smoker_damage = Global.active_player.stored_damage*0.5
+		if Global.is_bier_buff_active:
+			bier_buff_multi = 2
+		else:
+			bier_buff_multi = 1
+		#print("dome hier")
+		smoker_damage = floor(Global.active_player.stored_damage*0.5)
+		smoker_damage = smoker_damage * bier_buff_multi
 		var card_text = str("Verursache ",smoker_damage," Schaden")
 		card_description.text = card_text
 	elif Global.active_player == Global.dome_character2:
-		print("dome2 hier")
-		smoker_damage = Global.active_player.stored_damage*0.5
+		if Global.is_bier_buff2_active:
+			bier_buff_multi = 2
+		else:
+			bier_buff_multi = 1
+		#print("dome2 hier")
+		smoker_damage = floor(Global.active_player.stored_damage*0.5)
+		smoker_damage = smoker_damage * bier_buff_multi
 		var card_text = str("Verursache ",smoker_damage," Schaden")
 		card_description.text = card_text
 
@@ -43,6 +54,5 @@ func _process(delta):
 func trigger_effect():
 	card_basic_effect()
 	Global.inactive_player.apply_damage(smoker_damage)
-	Global.active_player.stored_damage = 0
 	discard_card()
 	
