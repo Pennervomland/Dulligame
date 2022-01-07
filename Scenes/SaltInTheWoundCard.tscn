@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/SaltInTheWoundCard.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=2]
+
+[node name="SaltInTheWoundCard" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="CardDescription" parent="." index="5"]
+text = "Dein Gegner kann sich nächste runde nicht heilen"

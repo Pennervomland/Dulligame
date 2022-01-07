@@ -6,11 +6,13 @@ export var saltstorm_damage:int = 20
 
 export var bath_salt_card_amount:int = 2
 export var salt_shaker_card_amount:int = 2 
+export var salt_in_the_wound_card_amount:int = 2
 
 onready var salt_bar = $Control/SaltBar
 
 onready var bath_salt_card = preload("res://Scenes/BathSaltCard.tscn")
 onready var salt_shaker_card = preload("res://Scenes/SaltShakerCard.tscn")
+onready var salt_in_the_wound_card = preload("res://Scenes/SaltInTheWoundCard.tscn")
 
 export var ragequit_hp_difference:int = 30
 export var salt_after_damage:int = 1
@@ -45,22 +47,28 @@ func generate_cards_in_deck(var amount: int):
 
 func apply_damage(var damage):
 	.apply_damage(damage)
+	print(enemy)
 	if enemy.hp - hp >= ragequit_hp_difference:
 		Global.game.end_game(self)
 	add_salt(salt_after_damage)
 	
 # das var i kann entfernt werden. einfach nur damit n bssl platz zwischen karten vorhanden ist
 func generate_special_cards_in_deck():
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
 	for i in range(0,bath_salt_card_amount):
 		var instance = bath_salt_card.instance()
-		var viewport:Vector2 = get_viewport().get_visible_rect().size 
 		instance.position = Vector2(-100,viewport.y+100)
 		instance.init(self)
 		put_card_in_deck(instance)
 	
 	for i in range(0,salt_shaker_card_amount):
 		var instance = salt_shaker_card.instance()
-		var viewport:Vector2 = get_viewport().get_visible_rect().size 
+		instance.position = Vector2(-100,viewport.y+100)
+		instance.init(self)
+		put_card_in_deck(instance)
+	
+	for i in range(0,salt_in_the_wound_card_amount):
+		var instance = salt_shaker_card.instance()
 		instance.position = Vector2(-100,viewport.y+100)
 		instance.init(self)
 		put_card_in_deck(instance)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/PlayerCharacter.gd" type="Script" id=1]
 [ext_resource path="res://assets/BebasNeue-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/characters/genericChar.png" type="Texture" id=3]
 [ext_resource path="res://assets/shield_pixelart.png" type="Texture" id=4]
 [ext_resource path="res://assets/heart.png" type="Texture" id=5]
+[ext_resource path="res://assets/cards/specialCards/Salzstreuer.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 2 )
@@ -69,6 +70,12 @@ value = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SaltShakerSymbol" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( -117.333, 157.333 )
+scale = Vector2( 0.0668251, 0.0708812 )
+texture = ExtResource( 6 )
 
 [node name="HeartSymbol" type="Sprite" parent="Control"]
 position = Vector2( -161.333, -234.667 )

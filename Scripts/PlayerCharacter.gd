@@ -10,6 +10,7 @@ export var armor = 0
 export var mana = 3
 
 var is_player1:bool
+var is_salted_by_marc = false
 
 var deck_size
 var deck = []
@@ -24,6 +25,7 @@ var enemy
 
 onready var player_ui_node = $Control
 onready var hp_bar = $Control/ProgressBar
+onready var salt_shaker_symbol = $Control/SaltShakerSymbol
 onready var armor_label = $Control/ArmorSymbol/ArmorLabel
 onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
 onready var face = $Face
@@ -46,10 +48,16 @@ func _ready():
 	var viewport:Vector2 = get_viewport().get_visible_rect().size
 	player_hand_node.position = Vector2(0,0)
 	start_hp = hp
+	
+
+func init_enemies():
 	if is_player1:
 		enemy = Global.player2
+		print("My enemy is player2")
 	else:
 		enemy = Global.player1
+		print("My enemy is player 1")
+
 
 func apply_damage(var damage):
 	var damage_dealt = damage - armor
@@ -85,15 +93,18 @@ func hide_ui():
 
 
 func apply_healing(var healing):
-	hp = hp + healing
-	if hp > start_hp:
-		hp = start_hp
-	if is_player1:
-		Global.hp_player1 = hp
-	else:
-		Global.hp_player2 = hp
-	hp_bar.value = hp
 	
+	if !is_salted_by_marc:
+		hp = hp + healing
+		if hp > start_hp:
+			hp = start_hp
+		if is_player1:
+			Global.hp_player1 = hp
+		else:
+			Global.hp_player2 = hp
+		hp_bar.value = hp
+	else:
+		Global.ui.set_round_count_text("Du wurdest versalzt!")
 
 func apply_mana_costs(var mana_costs):
 	mana = mana - mana_costs
@@ -170,7 +181,7 @@ func end_turn():
 	#print("Player hand: ",player_hand)
 	for card in player_hand:
 		card.position = Vector2(-100,viewport.y+100)
-
+	entsalt_yourself()
 
 func draw_card_from_deck():
 	var deck_size = deck.size()
@@ -246,6 +257,14 @@ func generate_attack_card_in_deck():
 	instance.init(self)
 	put_card_in_deck(instance)
 
+
+func put_salt_in_wound():
+	is_salted_by_marc = true
+	salt_shaker_symbol.visible = true
+
+func entsalt_yourself():
+	is_salted_by_marc = false
+	salt_shaker_symbol.visible = false
 
 func rotate_face():
 	face.scale.x = -face.scale.x

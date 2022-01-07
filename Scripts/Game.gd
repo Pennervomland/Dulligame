@@ -34,6 +34,8 @@ func _ready():
 	Global.inactive_player = Global.player2
 	active_player = player1
 	inactive_player= player2
+	player1.init_enemies()
+	player2.init_enemies()
 	$Hand.init_the_fucking_hand()
 	next_turn()
 
