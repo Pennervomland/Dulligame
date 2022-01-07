@@ -1,17 +1,11 @@
 extends "res://Scripts/Card.gd"
 
-var count_down:int = 0
 
 func _ready():
 	Global.ui.connect("end_turn_signal", self, "count_down_rounds")
 
-func count_down_rounds():
-	if count_down > 0:
-		count_down -= 1
 
 func _process(delta):
-	if count_down <= 0:
-		Global.active_player.convert_healing_to_armor = false
 	#Moves card in center and makes it bigger if in use
 	if(is_card_in_use):
 		scale = Vector2(1,1)
@@ -31,7 +25,6 @@ func _process(delta):
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
 	card_basic_effect()
-	count_down = 2
-	Global.active_player.convert_healing_to_armor = true
+	Global.active_player.activate_winterfell_card()
 	discard_card()
 	

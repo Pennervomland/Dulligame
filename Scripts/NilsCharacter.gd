@@ -19,7 +19,9 @@ func generate_cards_in_deck(var amount:int):
 		generate_healing_card_in_deck()
 	for i in range(0,3):
 		generate_winterfell_card()
-
+func activate_winterfell_card():
+	pass
+	
 func generate_winterfell_card():
 	var instance = winterfell_card.instance()
 	var viewport:Vector2 = get_viewport().get_visible_rect().size 
