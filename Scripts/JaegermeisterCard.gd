@@ -1,6 +1,11 @@
 extends "res://Scripts/Card.gd"
 
 export var jaegermeister_buff:int = 3
+export var jaegermeister_healing:int = 3
+
+func _ready():
+	var card_text = str("Nico macht permanent ",jaegermeister_buff, "mehr Schaden. Heilt ",jaegermeister_healing," HP")
+	card_description.text = card_text
 
 func _process(delta):
 	#Moves card in center and makes it bigger if in use
@@ -21,6 +26,8 @@ func _process(delta):
 	
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
-	card_basic_effect().give_nico_jaegermeister(jaegermeister_buff)
+	card_basic_effect()
+	Global.active_player.give_nico_jaegermeister(jaegermeister_buff)
+	Global.active_player.apply_healing(jaegermeister_healing)
 	discard_card()
 	

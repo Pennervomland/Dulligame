@@ -2,6 +2,10 @@ extends "res://Scripts/Card.gd"
 
 export var afk_healing_bonus:int = 20
 
+func _ready():
+	var card_text = str("Setze nächste Runde aus und heile stattdessen ", afk_healing_bonus, " HP")
+	card_description = card_text
+
 func _process(delta):
 	#Moves card in center and makes it bigger if in use
 	if(is_card_in_use):

@@ -55,12 +55,15 @@ func get_nico():
 	is_nico_active = true
 
 func give_nico_jaegermeister(var jaegermeister_buff):
-	if nico_damage + jaegermeister_buff < nico_max_damage:
-		nico_damage = nico_damage + jaegermeister_buff 
-		Global.ui.set_round_count_ldabel_text("Nico gebufft")
-	else: 
-		nico_damage = nico_max_damage
-		Global.ui.set_round_count_label_text("Nicos maximaler Schaden erreicht")
+	if is_nico_active:
+		if nico_damage + jaegermeister_buff < nico_max_damage:
+			nico_damage = nico_damage + jaegermeister_buff 
+			Global.ui.set_round_count_ldabel_text("Nico gebufft")
+		else: 
+			nico_damage = nico_max_damage
+			Global.ui.set_round_count_label_text("Nicos maximaler Schaden erreicht")
+	else:
+		Global.ui.set_round_count_label_text("Wo Nico?")
 
 func go_afk_next_round(var afk_healing_bonus):
 	self.afk_healing_bonus = afk_healing_bonus
