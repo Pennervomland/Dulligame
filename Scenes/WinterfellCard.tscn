@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/cards/specialCards/Winterfell.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/WinterfellCard.gd" type="Script" id=3]
+
+[node name="WinterfellCard" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="CardImage" parent="." index="3"]
+position = Vector2( 2, -80 )
+scale = Vector2( 0.253566, 0.218502 )
+texture = ExtResource( 2 )
