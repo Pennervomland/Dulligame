@@ -21,14 +21,8 @@ func _process(delta):
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
 	card_basic_effect()
-	var penguin_mode
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var random_number = rng.randi_range(0,1)
-	if random_number == 0:
-		penguin_mode = "attack"
-	elif random_number == 1:
-		penguin_mode = "defense"
-	Global.active_player.add_penguin(penguin_mode)
-	discard_card()
+	is_card_in_use = false
+	
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	self.position = Vector2(-200,viewport.y+300)
 	

@@ -1,6 +1,7 @@
 extends Sprite
 
 onready var game = get_tree().root.get_child(1)
+
 export var max_cards_on_hand:int = 5
 
 var start_hp
@@ -8,6 +9,13 @@ var start_hp
 export var hp = 100
 export var armor = 0 
 export var mana = 3
+
+export var attack_card_amount:int = 5
+export var mana_card_amount:int = 5
+export var healing_card_amount:int = 5
+export var armor_card_amount:int = 5
+
+export var wine_market_card_amount:int = 2
 
 var is_player1:bool
 var is_salted_by_marc = false
@@ -37,6 +45,8 @@ onready var attack_card = preload("res://Scenes/AttackCard.tscn")
 onready var healing_card = preload("res://Scenes/HealingCard.tscn")
 onready var mana_card = preload("res://Scenes/ManaCard.tscn")
 onready var armor_card = preload("res://Scenes/ArmorCard.tscn")
+onready var wine_bottle_card = preload("res://Scenes/WineBottle.tscn")
+onready var wine_market_card = preload("res://Scenes/WineMarket.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -197,6 +207,7 @@ func draw_card_from_deck():
 		Global.deck_size_player2 -=1
 		
 	player_hand.append(selected_card)
+	print(selected_card)
 	player_hand_node.add_child(selected_card)
 
 
@@ -257,6 +268,14 @@ func generate_attack_card_in_deck():
 	instance.init(self)
 	put_card_in_deck(instance)
 
+func generate_wine_market_card_in_deck():
+	var instance = wine_market_card.instance()
+	#get_tree().root.get_child(1).get_child(3).add_child(instance)
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	instance.position = Vector2(-100,viewport.y+100)
+	instance.init(self)
+	put_card_in_deck(instance)
+
 
 func put_salt_in_wound():
 	is_salted_by_marc = true
@@ -266,5 +285,16 @@ func entsalt_yourself():
 	is_salted_by_marc = false
 	salt_shaker_symbol.visible = false
 
+func spawn_wine_bottles(var wine_bottle_amount):
+	for i in range(0,wine_bottle_amount):
+		var instance = wine_bottle_card.instance()
+		#get_tree().root.get_child(1).get_child(3).add_child(instance)
+		var viewport:Vector2 = get_viewport().get_visible_rect().size 
+		instance.position = Vector2(-100,viewport.y+100)
+		instance.init(self)
+		put_card_in_deck(instance)
+	
+
 func rotate_face():
 	face.scale.x = -face.scale.x
+

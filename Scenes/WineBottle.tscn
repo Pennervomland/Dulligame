@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/cards/specialCards/Badenser Wein.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/WineBottle.gd" type="Script" id=3]
+
+[node name="WineBottle" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="CardImage" parent="." index="3"]
+texture = ExtResource( 2 )
+
+[node name="CardDescription" parent="." index="5"]
+text = "Ist absolut useless"
