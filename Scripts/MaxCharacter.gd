@@ -14,6 +14,10 @@ func generate_cards_in_deck(var amount: int):
 	generate_armor_card_in_deck()
 	generate_armor_card_in_deck()
 	generate_armor_card_in_deck()
+	generate_wine_market_card_in_deck()
+	generate_wine_market_card_in_deck()
+	generate_wine_market_card_in_deck()
+	generate_wine_market_card_in_deck()
 		
 	#dreckig
 	#if is_player1:

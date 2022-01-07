@@ -1,5 +1,11 @@
 extends "res://Scripts/Card.gd"
 
+export var wine_bottles_to_spawn:int = 3
+
+func _ready():
+	var card_text = str("Spawne ",wine_bottles_to_spawn," im Gegnerdeck")
+	card_description.text = card_text
+
 
 func _process(delta):
 	#Moves card in center and makes it bigger if in use
@@ -21,14 +27,6 @@ func _process(delta):
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
 	card_basic_effect()
-	var penguin_mode
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var random_number = rng.randi_range(0,1)
-	if random_number == 0:
-		penguin_mode = "attack"
-	elif random_number == 1:
-		penguin_mode = "defense"
-	Global.active_player.add_penguin(penguin_mode)
+	Global.inactive_player.spawn_wine_bottles(wine_bottles_to_spawn)
 	discard_card()
 	
