@@ -4,6 +4,9 @@ var afk_card = preload("res://Scenes/AFKCard.tscn")
 var nicos_help_card = preload("res://Scenes/NicosHelpCard.tscn")
 var jaegermeister_card = preload("res://Scenes/NicosHelpCard.tscn") 
 
+onready var nico_damage_label = $Nico/NicoDamageLabel
+onready var nico_sprite = $Nico
+
 var is_too_late = false
 var is_nico_active = false
 var is_afk = false
@@ -20,10 +23,13 @@ export var nico_start_damgage:int = 2
 var nico_damage
 var afk_healing_bonus
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_name = "Max"
 	nico_damage = nico_start_damgage
+	nico_sprite.visible = false
+	nico_damage_label.text = str(nico_damage)
 
 
 func begin_turn():
@@ -48,11 +54,13 @@ func end_turn():
 	if goes_afk_next_round:
 		is_afk = true
 		goes_afk_next_round = false
+	Global.inactive_player.apply_damage(nico_damage)
 	.end_turn()
 
 
 func get_nico():
 	is_nico_active = true
+	nico_sprite.visible = true
 
 func give_nico_jaegermeister(var jaegermeister_buff):
 	if is_nico_active:
@@ -64,6 +72,8 @@ func give_nico_jaegermeister(var jaegermeister_buff):
 			Global.ui.set_round_count_label_text("Nicos maximaler Schaden erreicht")
 	else:
 		Global.ui.set_round_count_label_text("Wo Nico?")
+	nico_damage_label.text = str(nico_damage)
+
 
 func go_afk_next_round(var afk_healing_bonus):
 	self.afk_healing_bonus = afk_healing_bonus
