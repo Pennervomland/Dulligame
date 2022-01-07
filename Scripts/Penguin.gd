@@ -20,6 +20,7 @@ func init(var penguin_mode, var penguin_number, var penguin_master):
 	self.penguin_mode = penguin_mode
 	self.penguin_number = penguin_number
 	self.penguin_master = penguin_master
+	old_mode = penguin_mode
 	change_mode(penguin_mode)
 
 func change_mode (var new_mode):
@@ -31,7 +32,6 @@ func change_mode (var new_mode):
 
 
 func change_mode_temporarily(var temp_mode):
-	old_mode = penguin_mode
 	penguin_mode = temp_mode
 	change_mode(penguin_mode)
 	

@@ -68,7 +68,7 @@ func generate_special_cards_in_deck():
 		put_card_in_deck(instance)
 	
 	for i in range(0,salt_in_the_wound_card_amount):
-		var instance = salt_shaker_card.instance()
+		var instance = salt_in_the_wound_card.instance()
 		instance.position = Vector2(-100,viewport.y+100)
 		instance.init(self)
 		put_card_in_deck(instance)
