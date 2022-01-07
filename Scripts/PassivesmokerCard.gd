@@ -13,13 +13,13 @@ func _ready():
 func set_smoker_damage():
 	if Global.active_player == Global.dome_character:
 		print("dome hier")
-		smoker_damage = Global.active_player.stored_damage
-		var card_text = str("Verursache ",smoker_damage*0.8," Schaden")
+		smoker_damage = Global.active_player.stored_damage*0.5
+		var card_text = str("Verursache ",smoker_damage," Schaden")
 		card_description.text = card_text
 	elif Global.active_player == Global.dome_character2:
 		print("dome2 hier")
-		smoker_damage = Global.active_player.stored_damage
-		var card_text = str("Verursache ",smoker_damage*0.8," Schaden")
+		smoker_damage = Global.active_player.stored_damage*0.5
+		var card_text = str("Verursache ",smoker_damage," Schaden")
 		card_description.text = card_text
 
 func _process(delta):
@@ -42,7 +42,7 @@ func _process(delta):
 #Trigger effect (damage/heal/mana_cost) or special effect
 func trigger_effect():
 	card_basic_effect()
-	Global.inactive_player.apply_damage(smoker_damage*0.8)
+	Global.inactive_player.apply_damage(smoker_damage)
 	Global.active_player.stored_damage = 0
 	discard_card()
 	
