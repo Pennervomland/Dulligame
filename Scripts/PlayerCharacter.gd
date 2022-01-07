@@ -118,6 +118,8 @@ func apply_healing(var healing):
 
 func apply_mana_costs(var mana_costs):
 	mana = mana - mana_costs
+	if mana < 0:
+		mana = 0
 	if is_player1:
 		print("player1 mana abgezogen")
 		Global.mana_player1 = mana
@@ -128,6 +130,7 @@ func apply_mana_costs(var mana_costs):
 
 func apply_mana_bonus(var mana_bonus):
 	mana = mana + mana_bonus
+	
 	if is_player1:
 		Global.mana_player1 = mana
 	else:

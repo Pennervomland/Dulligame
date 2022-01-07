@@ -52,7 +52,7 @@ func apply_damage(var damage):
 		Global.game.end_game(self)
 	add_salt(salt_after_damage)
 	
-# das var i kann entfernt werden. einfach nur damit n bssl platz zwischen karten vorhanden ist
+
 func generate_special_cards_in_deck():
 	var viewport:Vector2 = get_viewport().get_visible_rect().size 
 	for i in range(0,bath_salt_card_amount):
