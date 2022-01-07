@@ -66,7 +66,7 @@ func give_nico_jaegermeister(var jaegermeister_buff):
 	if is_nico_active:
 		if nico_damage + jaegermeister_buff < nico_max_damage:
 			nico_damage = nico_damage + jaegermeister_buff 
-			Global.ui.set_round_count_ldabel_text("Nico gebufft")
+			Global.ui.set_round_count_label_text("Nico gebufft")
 		else: 
 			nico_damage = nico_max_damage
 			Global.ui.set_round_count_label_text("Nicos maximaler Schaden erreicht")

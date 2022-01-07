@@ -4,7 +4,7 @@ export var jaegermeister_buff:int = 3
 export var jaegermeister_healing:int = 3
 
 func _ready():
-	var card_text = str("Nico macht permanent ",jaegermeister_buff, "mehr Schaden. Heilt ",jaegermeister_healing," HP")
+	var card_text = str("Nico macht permanent ",jaegermeister_buff, " mehr Schaden. Heilt ",jaegermeister_healing," HP")
 	card_description.text = card_text
 
 func _process(delta):
