@@ -24,10 +24,10 @@ scale = Vector2( 0.527908, 0.478889 )
 texture = ExtResource( 5 )
 
 [node name="NicoDamageLabel" type="Label" parent="Nico" index="0"]
-margin_left = 204.581
-margin_top = 141.995
-margin_right = 272.581
-margin_bottom = 345.995
+margin_left = 229.838
+margin_top = 189.327
+margin_right = 297.838
+margin_bottom = 393.327
 custom_fonts/font = SubResource( 1 )
 text = "1"
 __meta__ = {
