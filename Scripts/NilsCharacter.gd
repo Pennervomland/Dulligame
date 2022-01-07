@@ -20,6 +20,10 @@ func _process(delta):
 		six_pack.visible = false
 		fett_pack.visible = false
 
+func apply_damage(var damage):
+	.apply_damage(damage)
+	do_fett_six_pack_stuff()
+
 func apply_healing(var healing):
 	if !convert_healing_to_armor:
 		.apply_healing(healing)
@@ -41,11 +45,11 @@ func do_fett_six_pack_stuff():
 			fett_pack.scale = Vector2(0.35, 0.45)
 
 func generate_cards_in_deck(var amount:int):
-	for i in range(0,2):
+	for i in range(0,5):
 		generate_healing_card_in_deck()
-	for i in range(0,3):
+	for i in range(0,1):
 		generate_winterfell_card()
-	for i in range(0,3):
+	for i in range(0,1):
 		generate_bodycheck_card()
 
 func activate_bodycheck_card():
@@ -59,7 +63,7 @@ func count_down_rounds():
 
 func activate_winterfell_card():
 	convert_healing_to_armor = true
-	count_down = 3
+	count_down = 10 #auf 3 changen
 	do_fett_six_pack_stuff()
 
 func generate_bodycheck_card():
