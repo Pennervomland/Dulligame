@@ -6,6 +6,7 @@ var bodycheck_card = preload("res://Scenes/BodycheckCard.tscn")
 onready var six_pack = $Face/SixPack
 onready var fett_pack = $Face/FettPack
 
+var bodycheck_dmg:int
 var convert_healing_to_armor:bool
 var count_down:int
 # Called when the node enters the scene tree for the first time.
@@ -52,8 +53,21 @@ func generate_cards_in_deck(var amount:int):
 	for i in range(0,1):
 		generate_bodycheck_card()
 
+func calc_schwitzer_damage(var dmg):
+	bodycheck_dmg = 0
+	bodycheck_dmg = dmg
+	if hp_bar.value >= 80:
+		bodycheck_dmg *= 1
+	elif hp_bar.value >= 50:
+		bodycheck_dmg *= 1.2
+	elif hp_bar.value > 10:
+		bodycheck_dmg *= 1.5
+	elif hp_bar.value <= 10:
+		bodycheck_dmg *= 2
+	return ceil(bodycheck_dmg)
+
 func activate_bodycheck_card():
-	Global.inactive_player.apply_damage(armor)
+	Global.inactive_player.apply_damage(calc_schwitzer_damage(armor))
 
 func count_down_rounds():
 	if count_down > 0:
