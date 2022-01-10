@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Schrei.mp3-a4228a6108f333c3c490799c5f2161e0.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/Schrei.mp3"
+dest_files=[ "res://.import/Schrei.mp3-a4228a6108f333c3c490799c5f2161e0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

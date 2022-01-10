@@ -14,6 +14,9 @@ onready var bath_salt_card = preload("res://Scenes/BathSaltCard.tscn")
 onready var salt_shaker_card = preload("res://Scenes/SaltShakerCard.tscn")
 onready var salt_in_the_wound_card = preload("res://Scenes/SaltInTheWoundCard.tscn")
 
+onready var salz_schrei = $Control/SaltBar/SalzSchrei
+onready var schrei_mp3 = preload("res://assets/Sounds/Schrei.mp3")
+
 export var ragequit_hp_difference:int = 30
 export var salt_after_damage:int = 1
 
@@ -22,6 +25,7 @@ func _ready():
 	player_name = "Marc"
 	salt_bar.max_value = max_salt_level
 	salt_bar.value = salt_level
+	schrei_mp3.loop = false
 
 func add_salt(var salt):
 	if salt_level + salt < max_salt_level:
@@ -34,6 +38,7 @@ func add_salt(var salt):
 func evoke_saltstorm():
 	Global.inactive_player.apply_damage(saltstorm_damage)
 	Global.ui.set_round_count_label_text("Salzsturm!")
+	salz_schrei.play()
 
 func generate_cards_in_deck(var amount: int):
 	generate_attack_card_in_deck()
