@@ -6,6 +6,7 @@
 
 [node name="FabiCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+new_penguin_card_amount = 20
 
 [node name="Face" parent="." index="0"]
 position = Vector2( -2.6665, -141.332 )

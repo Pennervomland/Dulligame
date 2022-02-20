@@ -33,7 +33,8 @@ func _ready():
 		var var_name = str("penguin_pos",i)
 		penguin_positions.append(get(var_name))
 	print(penguin_positions)
-
+	
+	
 func generate_cards_in_deck(var amount: int):
 	generate_special_cards_in_deck()
 	
@@ -87,3 +88,8 @@ func end_turn():
 	for penguin in penguins:
 		penguin.restore_mode()
 	.end_turn()
+
+
+func reposition_saltshaker_ui():
+	.reposition_saltshaker_ui()
+	salt_shaker_explanation_label.rect_position.y -= 1800
