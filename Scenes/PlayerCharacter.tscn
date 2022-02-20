@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/PlayerCharacter.gd" type="Script" id=1]
 [ext_resource path="res://assets/BebasNeue-Regular.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,12 @@
 [ext_resource path="res://assets/cards/specialCards/Salzstreuer.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 300
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -71,11 +77,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaltShakerSymbol" type="Sprite" parent="Control"]
+[node name="SaltShakerSymbol" type="TextureRect" parent="Control"]
 visible = false
-position = Vector2( -117.333, 157.333 )
-scale = Vector2( 0.0668251, 0.0708812 )
+margin_left = -145.333
+margin_top = 133.333
+margin_right = 485.667
+margin_bottom = 829.333
+rect_scale = Vector2( 0.07, 0.07 )
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaltShakerExplanationLabel" type="Label" parent="Control/SaltShakerSymbol"]
+visible = false
+margin_left = 248.0
+margin_top = 610.0
+margin_right = 1448.0
+margin_bottom = 1162.0
+custom_fonts/font = SubResource( 7 )
+text = "Salz in deinen Wunden: 
+Du kannst dich diese 
+Runde nicht heilen!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HeartSymbol" type="Sprite" parent="Control"]
 position = Vector2( -161.333, -234.667 )
@@ -107,3 +133,6 @@ position = Vector2( -340.092, -378.667 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerHand"]
 anims/MovePlayerHandUp = SubResource( 5 )
 anims/RESET = SubResource( 6 )
+
+[connection signal="mouse_entered" from="Control/SaltShakerSymbol" to="." method="_on_SaltShakerSymbol_mouse_entered"]
+[connection signal="mouse_exited" from="Control/SaltShakerSymbol" to="." method="_on_SaltShakerSymbol_mouse_exited"]

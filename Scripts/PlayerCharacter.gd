@@ -34,6 +34,7 @@ var enemy
 onready var player_ui_node = $Control
 onready var hp_bar = $Control/ProgressBar
 onready var salt_shaker_symbol = $Control/SaltShakerSymbol
+onready var salt_shaker_explanation_label = $Control/SaltShakerSymbol/SaltShakerExplanationLabel
 onready var armor_label = $Control/ArmorSymbol/ArmorLabel
 onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
 onready var face = $Face
@@ -301,3 +302,13 @@ func spawn_wine_bottles(var wine_bottle_amount):
 func rotate_face():
 	face.scale.x = -face.scale.x
 
+
+
+func _on_SaltShakerSymbol_mouse_entered():
+	if salt_shaker_symbol.visible:
+		salt_shaker_explanation_label.visible = true
+		
+
+
+func _on_SaltShakerSymbol_mouse_exited():
+	salt_shaker_explanation_label.visible = false
