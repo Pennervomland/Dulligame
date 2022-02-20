@@ -44,18 +44,35 @@ func begin_turn():
 		if is_too_late:
 			apply_mana_costs(1)
 	else:
-		is_afk = false
 		apply_healing(afk_healing_bonus)
 		Global.game.next_turn()
 		
 
 
 func end_turn():
+	
+	if not is_afk:
+		player_hand = Global.hand.retrieve_cards()
+	
+	if is_afk:
+		is_afk = false
+	
 	if goes_afk_next_round:
 		is_afk = true
 		goes_afk_next_round = false
-	Global.inactive_player.apply_damage(nico_damage)
-	.end_turn()
+		
+	if is_nico_active:
+		Global.inactive_player.apply_damage(nico_damage)
+		
+	if !is_player1:
+		print(player_hand)
+		print("End: Cards in hand of player 2: ",player_hand.size())
+	
+	var viewport:Vector2 = get_viewport().get_visible_rect().size 
+	#print("Player hand: ",player_hand)
+	for card in player_hand:
+		card.position = Vector2(-100,viewport.y+100)
+	entsalt_yourself()
 
 
 func get_nico():
