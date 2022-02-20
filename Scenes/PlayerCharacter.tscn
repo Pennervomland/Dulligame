@@ -84,6 +84,7 @@ margin_top = 133.333
 margin_right = 485.667
 margin_bottom = 829.333
 rect_scale = Vector2( 0.07, 0.07 )
+mouse_default_cursor_shape = 2
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false

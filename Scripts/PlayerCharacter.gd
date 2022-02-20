@@ -59,7 +59,6 @@ func _ready():
 	var viewport:Vector2 = get_viewport().get_visible_rect().size
 	player_hand_node.position = Vector2(0,0)
 	start_hp = hp
-	
 
 func init_enemies():
 	if is_player1:
@@ -68,6 +67,13 @@ func init_enemies():
 	else:
 		enemy = Global.player1
 		print("My enemy is player 1")
+	reposition_saltshaker_ui()
+
+func reposition_saltshaker_ui():
+	if not is_player1:
+		salt_shaker_explanation_label.rect_position.x -= 2000
+		if salt_shaker_symbol.rect_position.x < 0:
+			salt_shaker_symbol.rect_position.x *= (-1)
 
 
 func apply_damage(var damage):
