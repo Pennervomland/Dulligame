@@ -32,6 +32,7 @@ func _ready():
 	nico_damage_label.text = str(nico_damage)
 
 
+
 func begin_turn():
 	if !is_afk:
 		var rng = RandomNumberGenerator.new()
@@ -50,7 +51,6 @@ func begin_turn():
 
 
 func end_turn():
-	
 	if not is_afk:
 		player_hand = Global.hand.retrieve_cards()
 	
@@ -78,6 +78,11 @@ func end_turn():
 func get_nico():
 	is_nico_active = true
 	nico_sprite.visible = true
+	if not is_player1:
+		nico_sprite.position.x *= (-1)
+		nico_damage_label.rect_position.x *= (-1)
+	else:
+		nico_sprite.flip_h = true
 
 func give_nico_jaegermeister(var jaegermeister_buff):
 	if is_nico_active:
