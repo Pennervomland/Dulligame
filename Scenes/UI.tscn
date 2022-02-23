@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/BebasNeue-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/CardStack.png" type="Texture" id=2]
-[ext_resource path="res://assets/windows_background_pixelart.png" type="Texture" id=3]
+[ext_resource path="res://assets/rooftop.png" type="Texture" id=3]
 [ext_resource path="res://assets/woodplank.png" type="Texture" id=4]
 [ext_resource path="res://assets/cards/mana.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=6]
@@ -56,8 +56,8 @@ __meta__ = {
 }
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 507, 299 )
-scale = Vector2( 0.66, 0.68 )
+position = Vector2( 508.726, 300 )
+scale = Vector2( 0.564379, 0.581481 )
 z_index = -10
 texture = ExtResource( 3 )
 

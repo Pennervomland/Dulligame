@@ -28,6 +28,7 @@ func _ready():
 	
 	Global.game = self
 	Global.hand = $Hand
+	generate_world(Global.world)
 	$UI.connect("end_turn_signal",self,"next_turn")
 	generate_character(Global.selected_character_player1)
 	generate_character(Global.selected_character_player2)
@@ -43,6 +44,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+#generates background image
+func generate_world(var world_name):
+	if (world_name == "WindowsWorld"):
+		$UI/Background.texture = load("res://assets/windows_background_pixelart.png")
+		$UI/Background.scale = Vector2(1.1, 1.1)
+	if (world_name == "RooftopWorld"):
+		$UI/Background.texture = load("res://assets/rooftop.png")
 
 #generates characters for each player
 func generate_character(var character_name):
