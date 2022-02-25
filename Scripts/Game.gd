@@ -123,7 +123,7 @@ func give_active_player_mana():
 	var current_mana_of_active_player = Global.active_player.mana
 	var difference = 3 - current_mana_of_active_player
 	print("Apply ", difference, " mana")
-	Global.active_player.apply_mana_bonus(difference)
+	Global.active_player.apply_mana_bonus_without_animation(difference)
 
 func trigger_permanent_effect():
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/PlayerCharacter.gd" type="Script" id=1]
 [ext_resource path="res://assets/BebasNeue-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/shield_pixelart.png" type="Texture" id=4]
 [ext_resource path="res://assets/heart.png" type="Texture" id=5]
 [ext_resource path="res://assets/cards/specialCards/Salzstreuer.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/PlayerCharacter.tres" type="Material" id=7]
+[ext_resource path="res://assets/GreenStar.png" type="Texture" id=8]
+[ext_resource path="res://assets/greybox.jpg" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 2 )
@@ -47,6 +50,65 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -340.092, -378.667 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "LeftPlayerDamage"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -4.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 254, 284 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "RightPlayerDamage"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 4.0, 0.0 ]
 }
 
 [node name="PlayerCharacter" type="Sprite"]
@@ -105,6 +167,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SaltShakerBackgroundBox" type="Sprite" parent="Control/SaltShakerSymbol/SaltShakerExplanationLabel"]
+position = Vector2( 1123.42, 532.862 )
+scale = Vector2( 2.3619, 1.42222 )
+z_index = -1
+texture = ExtResource( 9 )
+
 [node name="HeartSymbol" type="Sprite" parent="Control"]
 position = Vector2( -161.333, -234.667 )
 scale = Vector2( 0.03, 0.03 )
@@ -135,6 +203,31 @@ position = Vector2( -340.092, -378.667 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerHand"]
 anims/MovePlayerHandUp = SubResource( 5 )
 anims/RESET = SubResource( 6 )
+
+[node name="RightParticleEmitter" type="Particles2D" parent="."]
+position = Vector2( 106.667, 157.333 )
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.66
+visibility_rect = Rect2( -100, -100, 200, 500 )
+process_material = ExtResource( 7 )
+texture = ExtResource( 8 )
+
+[node name="LeftParticleEmitter" type="Particles2D" parent="."]
+position = Vector2( -112, 157.333 )
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 0.66
+visibility_rect = Rect2( -100, -100, 200, 500 )
+process_material = ExtResource( 7 )
+texture = ExtResource( 8 )
+
+[node name="DamageAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LeftPlayerDamage = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+anims/RightPlayerDamage = SubResource( 10 )
 
 [connection signal="mouse_entered" from="Control/SaltShakerSymbol" to="." method="_on_SaltShakerSymbol_mouse_entered"]
 [connection signal="mouse_exited" from="Control/SaltShakerSymbol" to="." method="_on_SaltShakerSymbol_mouse_exited"]

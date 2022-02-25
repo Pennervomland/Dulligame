@@ -6,6 +6,7 @@
 
 [node name="FabiCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+healing_card_amount = 20
 new_penguin_card_amount = 20
 
 [node name="Face" parent="." index="0"]

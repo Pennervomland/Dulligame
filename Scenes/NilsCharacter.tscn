@@ -8,6 +8,8 @@
 
 [node name="NilsCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+mana_card_amount = 10
+healing_card_amount = 10
 
 [node name="Face" parent="." index="0"]
 position = Vector2( -4, -142.667 )

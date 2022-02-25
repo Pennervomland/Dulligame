@@ -12,7 +12,8 @@ font_data = ExtResource( 4 )
 
 [node name="MaxCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-nicos_help_card_amount = 3
+afk_card_amount = 3
+jaegermeister_card_amount = 9
 
 [node name="Face" parent="." index="0"]
 position = Vector2( -6.66675, -146.667 )

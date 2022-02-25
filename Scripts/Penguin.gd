@@ -11,6 +11,7 @@ onready var attack_penguin_image = preload("res://assets/cards/specialCards/Fatt
 onready var defense_penguin_image = preload("res://assets/cards/specialCards/DeFenduin.png")
 
 onready var penguin_image = $PenguinImage
+onready var penguin_explanation_label = $PenguinExplanationLabel
 
 var old_mode
 

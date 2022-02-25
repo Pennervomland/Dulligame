@@ -46,8 +46,10 @@ func do_fett_six_pack_stuff():
 			fett_pack.scale = Vector2(0.35, 0.45)
 
 func generate_cards_in_deck(var amount:int):
-	for i in range(0,5):
+	for i in range(0,healing_card_amount):
 		generate_healing_card_in_deck()
+	for i in range(0,mana_card_amount):
+		generate_mana_card_in_deck()
 	for i in range(0,1):
 		generate_winterfell_card()
 	for i in range(0,1):

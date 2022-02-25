@@ -37,7 +37,10 @@ onready var salt_shaker_symbol = $Control/SaltShakerSymbol
 onready var salt_shaker_explanation_label = $Control/SaltShakerSymbol/SaltShakerExplanationLabel
 onready var armor_label = $Control/ArmorSymbol/ArmorLabel
 onready var player_hand_node_animator = $PlayerHand/AnimationPlayer
+onready var damage_animation_player = $DamageAnimationPlayer
 onready var face = $Face
+onready var left_particle_emitter = $LeftParticleEmitter
+onready var right_particle_emitter = $RightParticleEmitter
 
 var dead = false
 var player_name
@@ -48,6 +51,9 @@ onready var mana_card = preload("res://Scenes/ManaCard.tscn")
 onready var armor_card = preload("res://Scenes/ArmorCard.tscn")
 onready var wine_bottle_card = preload("res://Scenes/WineBottle.tscn")
 onready var wine_market_card = preload("res://Scenes/WineMarket.tscn")
+
+onready var green_star = preload("res://assets/GreenStar.png")
+onready var blue_star = preload("res://assets/BlueStar.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -80,6 +86,10 @@ func apply_damage(var damage):
 	var damage_dealt = damage - armor
 	if (damage_dealt > 0):
 		hp = hp - damage_dealt
+		if is_player1:
+			damage_animation_player.play("LeftPlayerDamage")
+		else:
+			damage_animation_player.play("RightPlayerDamage")
 	
 	if damage < armor:	
 		armor = armor - damage
@@ -112,6 +122,10 @@ func hide_ui():
 func apply_healing(var healing):
 	
 	if !is_salted_by_marc:
+		left_particle_emitter.texture = green_star
+		right_particle_emitter.texture = green_star
+		left_particle_emitter.emitting = true
+		right_particle_emitter.emitting = true
 		hp = hp + healing
 		if hp > start_hp:
 			hp = start_hp
@@ -135,9 +149,20 @@ func apply_mana_costs(var mana_costs):
 		Global.mana_player2 = mana
 	
 
+func apply_mana_bonus_without_animation(var mana_bonus):
+	mana = mana + mana_bonus
+	if is_player1:
+		Global.mana_player1 = mana
+	else:
+		Global.mana_player2 = mana
+
+
 func apply_mana_bonus(var mana_bonus):
 	mana = mana + mana_bonus
-	
+	left_particle_emitter.texture = blue_star
+	right_particle_emitter.texture = blue_star
+	left_particle_emitter.emitting = true
+	right_particle_emitter.emitting = true
 	if is_player1:
 		Global.mana_player1 = mana
 	else:
