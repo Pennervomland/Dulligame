@@ -17,41 +17,41 @@ texture = ExtResource( 2 )
 [node name="PenguinPositions" type="Node" parent="." index="3"]
 
 [node name="PenguinPos1" type="Position2D" parent="PenguinPositions" index="0"]
-position = Vector2( 33, 409 )
+position = Vector2( 30.5, 369.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos2" type="Position2D" parent="PenguinPositions" index="1"]
-position = Vector2( 79, 469 )
+position = Vector2( 76.5, 429.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos3" type="Position2D" parent="PenguinPositions" index="2"]
-position = Vector2( 118, 402 )
+position = Vector2( 115.5, 362.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos4" type="Position2D" parent="PenguinPositions" index="3"]
-position = Vector2( 168, 469 )
+position = Vector2( 165.5, 429.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos5" type="Position2D" parent="PenguinPositions" index="4"]
-position = Vector2( 215, 403 )
+position = Vector2( 212.5, 363.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos6" type="Position2D" parent="PenguinPositions" index="5"]
-position = Vector2( 275, 474 )
+position = Vector2( 272.5, 434.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos7" type="Position2D" parent="PenguinPositions" index="6"]
-position = Vector2( 322, 405 )
+position = Vector2( 319.5, 365.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos8" type="Position2D" parent="PenguinPositions" index="7"]
-position = Vector2( 379, 471 )
+position = Vector2( 376.5, 431.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos9" type="Position2D" parent="PenguinPositions" index="8"]
-position = Vector2( 422, 406 )
+position = Vector2( 419.5, 366.5 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="PenguinPos10" type="Position2D" parent="PenguinPositions" index="9"]
-position = Vector2( 477, 471 )
+position = Vector2( 474.5, 431.5 )
 scale = Vector2( 0.75, 0.75 )

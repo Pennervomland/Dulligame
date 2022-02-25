@@ -12,6 +12,7 @@ onready var defense_penguin_image = preload("res://assets/cards/specialCards/DeF
 
 onready var penguin_image = $PenguinImage
 onready var penguin_explanation_label = $PenguinExplanationLabel
+onready var penguin_explanation_background = $PenguinExplanationBackground
 
 var old_mode
 
@@ -28,9 +29,10 @@ func change_mode (var new_mode):
 	penguin_mode = new_mode
 	if penguin_mode == "attack":
 		penguin_image.texture = attack_penguin_image
+		penguin_explanation_label.text = "Fattackuin: Fügt \nGegner am Rundenende \nSchaden zu"
 	elif penguin_mode == "defense":
 		penguin_image.texture = defense_penguin_image
-
+		penguin_explanation_label.text = "Defenduin: Gibt \ndir Rüstung am Ende \neiner Runde"
 
 func change_mode_temporarily(var temp_mode):
 	penguin_mode = temp_mode
@@ -46,3 +48,14 @@ func trigger_effect():
 		Global.inactive_player.apply_damage(damage)
 	elif penguin_mode == "defense":
 		penguin_master.apply_armor(armor)
+
+
+func _on_PenguinImage_mouse_entered():
+	if not penguin_explanation_label.visible:
+		penguin_explanation_label.visible = true
+		penguin_explanation_background.visible = true
+
+
+func _on_PenguinImage_mouse_exited():
+	penguin_explanation_label.visible = false
+	penguin_explanation_background.visible = false

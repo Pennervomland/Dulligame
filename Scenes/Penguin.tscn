@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/greybox.jpg" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 300
+size = 150
 outline_size = 10
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
@@ -21,11 +21,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PenguinExplanationBackground" type="TextureRect" parent="."]
+visible = false
+margin_left = 496.0
+margin_top = 94.967
+margin_right = 1496.0
+margin_bottom = 844.967
+rect_scale = Vector2( 1.15278, 0.674455 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PenguinExplanationLabel" type="Label" parent="."]
-margin_left = -127.973
-margin_top = 176.033
-margin_right = 2179.03
-margin_bottom = 1262.03
+visible = false
+margin_left = 500.027
+margin_top = 83.0
+margin_right = 2807.03
+margin_bottom = 1169.0
 custom_fonts/font = SubResource( 1 )
 text = "Defenduin: Gibt dir
 Rüstung am Ende einer
@@ -34,8 +47,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PenguinBackgroundBox" type="Sprite" parent="PenguinExplanationLabel"]
-position = Vector2( 1123.42, 532.862 )
-scale = Vector2( 2.3619, 1.42222 )
-z_index = -1
-texture = ExtResource( 3 )
+[connection signal="mouse_entered" from="PenguinImage" to="." method="_on_PenguinImage_mouse_entered"]
+[connection signal="mouse_exited" from="PenguinImage" to="." method="_on_PenguinImage_mouse_exited"]
