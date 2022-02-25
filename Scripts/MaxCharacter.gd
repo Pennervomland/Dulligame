@@ -4,8 +4,9 @@ var afk_card = preload("res://Scenes/AFKCard.tscn")
 var nicos_help_card = preload("res://Scenes/NicosHelpCard.tscn")
 var jaegermeister_card = preload("res://Scenes/JaegermeisterCard.tscn") 
 
-onready var nico_damage_label = $Nico/NicoDamageLabel
 onready var nico_sprite = $Nico
+onready var nico_explanation_label = $Nico/NicoExplanationLabel
+onready var nico_explanation_background = $Nico/NicoExplanationBackground
 
 var is_too_late = false
 var is_nico_active = false
@@ -29,7 +30,8 @@ func _ready():
 	player_name = "Max"
 	nico_damage = nico_start_damgage
 	nico_sprite.visible = false
-	nico_damage_label.text = str(nico_damage)
+	#nico_damage_label.text = str(nico_damage)
+	nico_explanation_label.text = str("Nico: Fügt Gegner am \nEnde jeder Runde ", nico_damage,"\nSchaden zu")
 
 
 
@@ -79,8 +81,9 @@ func get_nico():
 	is_nico_active = true
 	nico_sprite.visible = true
 	if not is_player1:
-		nico_sprite.position.x *= (-1)
-		nico_damage_label.rect_position.x *= (-1)
+		nico_sprite.rect_position.x *= (-2.6)
+		#nico_sprite.position.x *= (-1)
+		#nico_damage_label.rect_position.x *= (-1)
 	else:
 		nico_sprite.flip_h = true
 
@@ -94,7 +97,8 @@ func give_nico_jaegermeister(var jaegermeister_buff):
 			Global.ui.set_round_count_label_text("Nicos maximaler Schaden erreicht")
 	else:
 		Global.ui.set_round_count_label_text("Wo Nico?")
-	nico_damage_label.text = str(nico_damage)
+	#nico_damage_label.text = str(nico_damage)
+	nico_explanation_label.text = str("Nico: Fügt Gegner am \nEnde jeder Runde ", nico_damage,"\nSchaden zu")
 
 
 func go_afk_next_round(var afk_healing_bonus):
@@ -131,3 +135,14 @@ func generate_special_cards_in_deck():
 	
 
 
+
+
+func _on_Nico_mouse_entered():
+	nico_explanation_label.visible = true
+	nico_explanation_background.visible = true
+	print("Moin meister")
+
+
+func _on_Nico_mouse_exited():
+	nico_explanation_label.visible = false
+	nico_explanation_background.visible = false
