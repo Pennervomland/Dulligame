@@ -5,6 +5,7 @@ var bodycheck_card = preload("res://Scenes/BodycheckCard.tscn")
 
 onready var six_pack = $Face/SixPack
 onready var fett_pack = $Face/FettPack
+onready var winterfell_symbol = $Control/WinterfellSym
 
 var bodycheck_dmg:int
 var convert_healing_to_armor:bool
@@ -20,6 +21,7 @@ func _process(delta):
 	if convert_healing_to_armor == false:
 		six_pack.visible = false
 		fett_pack.visible = false
+		get_child(1).get_child(2).hide()
 
 func apply_damage(var damage):
 	.apply_damage(damage)
@@ -80,6 +82,7 @@ func count_down_rounds():
 func activate_winterfell_card():
 	convert_healing_to_armor = true
 	count_down = 10 #auf 3 changen
+	get_child(1).get_child(2).show()
 	do_fett_six_pack_stuff()
 
 func generate_bodycheck_card():
@@ -95,3 +98,13 @@ func generate_winterfell_card():
 	instance.position = Vector2(-100,viewport.y+100)
 	instance.init(self)
 	put_card_in_deck(instance)
+
+
+
+func _on_WinterfellSym_mouse_entered():
+	if winterfell_symbol.visible:
+		winterfell_symbol.get_child(0).visible = true
+
+
+func _on_WinterfellSym_mouse_exited():
+	winterfell_symbol.get_child(0).visible = false
