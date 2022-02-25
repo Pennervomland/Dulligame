@@ -1,15 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/PlayerCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/NilsCharacter.gd" type="Script" id=2]
 [ext_resource path="res://assets/cards/steffennils.png" type="Texture" id=3]
 [ext_resource path="res://assets/cards/specialCards/sixpack.png" type="Texture" id=4]
 [ext_resource path="res://assets/cards/specialCards/fett.png" type="Texture" id=5]
+[ext_resource path="res://assets/BebasNeue-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/greybox.jpg" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 300
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
 
 [node name="NilsCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-mana_card_amount = 10
-healing_card_amount = 10
+mana_card_amount = 1
+healing_card_amount = 3
+armor_card_amount = 0
+wine_market_card_amount = 0
 
 [node name="Face" parent="." index="0"]
 position = Vector2( -4, -142.667 )
@@ -27,3 +37,37 @@ flip_h = true
 position = Vector2( -1.83411, 273.505 )
 scale = Vector2( 0.217236, 0.308915 )
 texture = ExtResource( 5 )
+
+[node name="WinterfellSym" type="TextureRect" parent="Control" index="2"]
+visible = false
+margin_left = -65.333
+margin_top = 142.667
+margin_right = 710.667
+margin_bottom = 861.667
+rect_scale = Vector2( 0.07, 0.07 )
+mouse_default_cursor_shape = 2
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinterfellExplain" type="Label" parent="Control/WinterfellSym" index="0"]
+visible = false
+margin_left = 95.2334
+margin_top = 685.71
+margin_right = 1997.23
+margin_bottom = 1771.71
+custom_fonts/font = SubResource( 1 )
+text = "Winterfell:
+Wandelt Heilung in
+Rüstung um"
+
+[node name="WinterfellBackground" type="Sprite" parent="Control/WinterfellSym/WinterfellExplain" index="0"]
+position = Vector2( 952.187, 532.862 )
+scale = Vector2( 2.01943, 1.42222 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[connection signal="mouse_entered" from="Control/WinterfellSym" to="." method="_on_WinterfellSym_mouse_entered"]
+[connection signal="mouse_exited" from="Control/WinterfellSym" to="." method="_on_WinterfellSym_mouse_exited"]
