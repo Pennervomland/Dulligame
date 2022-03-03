@@ -5,6 +5,7 @@ onready var game = get_tree().root.get_child(1)
 onready var chat_label = $Communication/Chat/ChatLabel
 
 var start_hp
+var is_player1
 
 export var hp = 100
 

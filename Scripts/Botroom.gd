@@ -27,12 +27,12 @@ func _ready():
 	generate_world(Global.world)
 	$BotUI.connect("end_turn_signal",self,"next_turn")
 	generate_character(Global.selected_character_player1)
+	generate_bot()
 	Global.active_player = Global.player1
 	Global.inactive_player = Global.player2
 	active_player = player1
 	inactive_player= player2
 	player1.init_enemies()
-	player2.init_enemies()
 	$Hand.init_the_fucking_hand()
 	next_turn()
 
@@ -42,6 +42,15 @@ func generate_world(var world_name):
 		$BotUI/Background.scale = Vector2(1.1, 1.1)
 	if (world_name == "RooftopWorld"):
 		$BotUI/Background.texture = load("res://assets/rooftop.png")
+
+func generate_bot():
+	var instance
+	instance = bot_cyberpenner_scene.instance()
+	character2 = instance
+	character2.position = position_player2.position
+	character2.is_player1 = false
+	player2 = instance
+	Global.player2 = instance
 
 func generate_character(var character_name):
 	var instance
@@ -100,3 +109,20 @@ func give_active_player_mana():
 	var difference = 3 - current_mana_of_active_player
 	print("Apply ", difference, " mana")
 	Global.active_player.apply_mana_bonus_without_animation(difference)
+
+
+func end_game(var losing_player):
+	print("End game")
+	
+	var winning_player
+	if losing_player == Global.player1:
+		winning_player = Global.player2
+	else:
+		winning_player = Global.player1
+	
+	winning_player.hide_ui()
+	
+	
+	var label_text = str(losing_player.player_name," lost!")
+	Global.ui.set_round_count_label_text(label_text)
+	Global.ui.display_end_buttons()
