@@ -25,6 +25,7 @@ var player2
 var game
 var ui
 var world
+var mode
 
 var dome_character
 var dome_character2

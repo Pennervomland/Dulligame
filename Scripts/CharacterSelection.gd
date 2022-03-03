@@ -12,6 +12,8 @@ func _ready():
 
 func _on_MaxButton_pressed():
 	select_character("Max")
+	if(Global.mode == "BotMode"):
+		get_tree().change_scene("res://Scenes//Botroom.tscn")
 	change_player()
 	if(characters_selected==2):
 		get_tree().change_scene("res://Scenes//Testroom.tscn")
@@ -19,6 +21,8 @@ func _on_MaxButton_pressed():
 
 func _on_MarcButton_pressed():
 	select_character("Marc")
+	if(Global.mode == "BotMode"):
+		get_tree().change_scene("res://Scenes//Botroom.tscn")
 	change_player()
 	if(characters_selected==2):
 		get_tree().change_scene("res://Scenes//Testroom.tscn")
@@ -26,6 +30,8 @@ func _on_MarcButton_pressed():
 
 func _on_FabiButton_pressed():
 	select_character("Fabi")
+	if(Global.mode == "BotMode"):
+		get_tree().change_scene("res://Scenes//Botroom.tscn")
 	change_player()
 	if(characters_selected==2):
 		get_tree().change_scene("res://Scenes//Testroom.tscn")
@@ -33,6 +39,8 @@ func _on_FabiButton_pressed():
 
 func _on_DomeButton_pressed():
 	select_character("Dome")
+	if(Global.mode == "BotMode"):
+		get_tree().change_scene("res://Scenes//Botroom.tscn")
 	change_player()
 	if(characters_selected==2):
 		get_tree().change_scene("res://Scenes//Testroom.tscn")
@@ -40,6 +48,8 @@ func _on_DomeButton_pressed():
 
 func _on_NilsButton_pressed():
 	select_character("Nils")
+	if(Global.mode == "BotMode"):
+		get_tree().change_scene("res://Scenes//Botroom.tscn")
 	change_player()
 	if(characters_selected==2):
 		get_tree().change_scene("res://Scenes//Testroom.tscn")

@@ -29,9 +29,6 @@ margin_right = 862.0
 margin_bottom = 161.0
 custom_fonts/font = SubResource( 1 )
 text = "World Selection"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RooftopWorld" type="Button" parent="."]
 margin_left = 216.0

@@ -136,9 +136,6 @@ margin_right = 262.0
 margin_bottom = 54.0
 custom_fonts/font = SubResource( 4 )
 value = 50.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SaltShakerSymbol" type="TextureRect" parent="Control"]
 visible = false
