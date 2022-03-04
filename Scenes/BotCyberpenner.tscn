@@ -1,10 +1,174 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/CyberPenner.png" type="Texture" id=1]
 [ext_resource path="res://assets/BebasNeue-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/heart.png" type="Texture" id=3]
 [ext_resource path="res://assets/etc/tooltip.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/BotCyberpenner.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/BotCyberpenner.gd" type="Script" id=5]
+[ext_resource path="res://assets/GreenStar.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/PlayerCharacter.tres" type="Material" id=7]
+
+[sub_resource type="Animation" id=3]
+resource_name = "AttackOne"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3600.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -730, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 10 ],
+"method": "apply_enemy_damage"
+}, {
+"args": [  ],
+"method": "start_end_turn_timer"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "AttackTwo"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParticleEmitter:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParticleEmitter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 106.667, 157.333 ), Vector2( -700, 157.333 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParticleEmitter:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 1 ],
+"method": "apply_enemy_heal"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParticleEmitter:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ParticleEmitter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 106.667, 157.333 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ParticleEmitter:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -16,14 +180,27 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="BotCyberpenner" type="Node2D"]
-position = Vector2( 422, 289 )
+position = Vector2( -2, -2 )
 script = ExtResource( 5 )
 
+[node name="AttackAnimation" type="AnimationPlayer" parent="."]
+anims/AttackOne = SubResource( 3 )
+anims/AttackTwo = SubResource( 5 )
+anims/RESET = SubResource( 4 )
+
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2.6355, -0.999969 )
 scale = Vector2( 0.348411, 0.348411 )
 texture = ExtResource( 1 )
 flip_h = true
+
+[node name="EndTurnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackThreeTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchor_left = -3.475
@@ -45,6 +222,7 @@ texture = ExtResource( 3 )
 [node name="Communication" type="Node2D" parent="."]
 
 [node name="Chat" type="Sprite" parent="Communication"]
+visible = false
 position = Vector2( -254, -29 )
 texture = ExtResource( 4 )
 
@@ -54,3 +232,28 @@ margin_top = -67.0
 margin_right = 153.0
 margin_bottom = 63.0
 custom_fonts/font = SubResource( 2 )
+
+[node name="ChatTimer" type="Timer" parent="Communication"]
+one_shot = true
+
+[node name="ParticleEmitter" type="Particles2D" parent="."]
+visible = false
+position = Vector2( 106.667, 157.333 )
+emitting = false
+amount = 30
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.66
+visibility_rect = Rect2( -100, -100, 200, 500 )
+process_material = ExtResource( 7 )
+texture = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ParticleEmitter"]
+position = Vector2( 2.333, 0.667007 )
+scale = Vector2( 4.39581, 4.39581 )
+texture = ExtResource( 6 )
+
+[connection signal="timeout" from="EndTurnTimer" to="." method="_on_EndTurnTimer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="AttackThreeTimer" to="." method="_on_AttackThreeTimer_timeout"]
+[connection signal="timeout" from="Communication/ChatTimer" to="." method="_on_ChatTimer_timeout"]

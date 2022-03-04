@@ -46,6 +46,7 @@ func generate_world(var world_name):
 func generate_bot():
 	var instance
 	instance = bot_cyberpenner_scene.instance()
+	add_child(instance)
 	character2 = instance
 	character2.position = position_player2.position
 	character2.is_player1 = false
@@ -101,8 +102,7 @@ func toggle_current_player():
 
 	var label_text = str(Global.round_counter,": ",Global.active_player.player_name)
 	Global.ui.set_round_count_label_text(label_text)
-	if (Global.active_player == player1):
-		Global.active_player.begin_turn()
+	Global.active_player.begin_turn()
 
 func give_active_player_mana():
 	var current_mana_of_active_player = Global.active_player.mana

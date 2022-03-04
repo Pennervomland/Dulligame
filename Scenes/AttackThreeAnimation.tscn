@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/AttackThreeAnimation.gd" type="Script" id=1]
+
+[node name="AttackThreeAnimation" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Position1" type="Position2D" parent="."]
+position = Vector2( -110, -180 )
+
+[node name="Position2" type="Position2D" parent="."]
+position = Vector2( 110, -180 )
+
+[node name="Position3" type="Position2D" parent="."]
+position = Vector2( 220, 0 )
+
+[node name="Position4" type="Position2D" parent="."]
+position = Vector2( 0, 180 )
+
+[node name="Position5" type="Position2D" parent="."]
+position = Vector2( -220, -1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 6.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_DestroyTimer_timeout"]

@@ -39,6 +39,8 @@ var played_card
 var active_player
 var inactive_player
 
+var helper_bots_active:int
+
 var hand
 var is_card_in_use:bool = false
 
