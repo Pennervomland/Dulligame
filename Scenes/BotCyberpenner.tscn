@@ -106,6 +106,20 @@ tracks/3/keys = {
 "method": "apply_enemy_heal"
 } ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_end_turn_timer"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -201,6 +215,7 @@ one_shot = true
 
 [node name="AttackThreeTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchor_left = -3.475
