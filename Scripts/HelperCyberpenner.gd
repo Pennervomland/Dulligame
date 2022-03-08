@@ -4,6 +4,9 @@ onready var timer = $Timer
 onready var animation_spin = $AnimationSpinner
 onready var animation_move = $AnimationMover
 onready var destroy_timer = $DestroyTimer
+onready var sound_timer = $SoundTimer
+onready var sound = $Sound
+onready var sound_mp3 = preload("res://assets/etc/hehe.mp3")
 
 
 
@@ -11,6 +14,7 @@ onready var destroy_timer = $DestroyTimer
 func _ready():
 	timer.start()
 	destroy_timer.start()
+	sound_timer.start()
 	Global.helper_bots_active +=1
 	animation_spin.play("spin")
 
@@ -34,3 +38,8 @@ func _on_Timer_timeout():
 func _on_DestroyTimer_timeout():
 	Global.helper_bots_active -=1
 	queue_free()
+
+
+func _on_SoundTimer_timeout():
+	sound_mp3.loop = false
+	sound.play()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hehe.mp3-7a6dc8ad2b8490ef23934d6d07062421.mp3str"
+
+[deps]
+
+source_file="res://assets/etc/hehe.mp3"
+dest_files=[ "res://.import/hehe.mp3-7a6dc8ad2b8490ef23934d6d07062421.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -41,7 +41,7 @@ func start_end_turn_timer():
 func roll_attack():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var number = rng.randi_range(1, 3)
+	var number = rng.randi_range(3, 3)
 	choose_attack(number)
 
 func choose_attack(var attack_number):
