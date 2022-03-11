@@ -217,6 +217,9 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="DDNetTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchor_left = -3.475
 anchor_top = -6.525
@@ -271,4 +274,5 @@ texture = ExtResource( 6 )
 [connection signal="timeout" from="EndTurnTimer" to="." method="_on_EndTurnTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
 [connection signal="timeout" from="AttackThreeTimer" to="." method="_on_AttackThreeTimer_timeout"]
+[connection signal="timeout" from="DDNetTimer" to="." method="_on_DDNetTimer_timeout"]
 [connection signal="timeout" from="Communication/ChatTimer" to="." method="_on_ChatTimer_timeout"]

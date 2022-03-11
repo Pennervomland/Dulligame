@@ -10,16 +10,19 @@ onready var end_turn_timer = $EndTurnTimer
 onready var attack_three_timer = $AttackThreeTimer
 onready var bot_ui = Global.ui
 onready var attack_three_animation = preload("res://Scenes/AttackThreeAnimation.tscn")
+onready var ddnet_timer = $DDNetTimer
 
 var start_hp
 var is_player1
 var player_name = "Penner"
+var chat_pos
 
 export var hp = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hp_bar.value = self.hp
+	chat_pos = chat.position
 
 func begin_turn():
 	attack_timer.start()
@@ -41,8 +44,10 @@ func start_end_turn_timer():
 func roll_attack():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var number = rng.randi_range(3, 3)
+	var number = rng.randi_range(4, 4)
 	choose_attack(number)
+
+
 
 func choose_attack(var attack_number):
 	match attack_number:
@@ -52,6 +57,8 @@ func choose_attack(var attack_number):
 			attack_two()
 		3: 
 			attack_three()
+		4:
+			attack_ddnet()
 
 func attack_one():
 	$AttackAnimation.play("AttackOne")
@@ -70,6 +77,12 @@ func attack_three():
 	add_child(instance)
 	instance.position.x = -700
 	attack_three_timer.start()
+
+func attack_ddnet():
+	chat_timer.start()
+	chat.visible = true
+	chat_label.text = "Komm DDNet spielen"
+	ddnet_timer.start()
 
 func apply_enemy_damage(var damage):
 	Global.inactive_player.apply_damage(damage)
@@ -94,6 +107,7 @@ func apply_damage(var damage):
 func _on_ChatTimer_timeout():
 	chat.visible = false
 	chat_label.text = ""
+	chat.position = chat_pos
 
 func _on_AttackTimer_timeout():
 	roll_attack()
@@ -111,3 +125,28 @@ func _on_AttackThreeTimer_timeout():
 	chat.visible = true
 	chat_label.text = "GET FUCKED N00B"
 	start_end_turn_timer()
+
+
+func _on_DDNetTimer_timeout():
+	if Global.selected_character_player1 == "Fabi":
+		chat_timer.start()
+		chat.visible = true
+		chat.position.x -= 200
+		chat_label.text = "AAAAAAAAAAAAAAAAAAH"
+		Global.inactive_player.apply_damage(99)
+	else:
+		chat_timer.start()
+		chat.visible = true
+		var ddnet_rng = RandomNumberGenerator.new()
+		ddnet_rng.randomize()
+		var num = ddnet_rng.randi_range(1,2)
+		print(num)
+		if num == 1:
+			chat.position.x -= 200
+			chat_label.text = "OK"
+			Global.inactive_player.apply_healing(10)
+		else:
+			chat.position.x -= 200
+			chat_label.text = "Nein, geh weg"
+			Global.inactive_player.apply_damage(30)
+	end_turn_timer.start()
