@@ -12,6 +12,7 @@ onready var bot_ui = Global.ui
 onready var attack_three_animation = preload("res://Scenes/AttackThreeAnimation.tscn")
 onready var ddnet_timer = $DDNetTimer
 
+var armor
 var start_hp
 var is_player1
 var player_name = "Penner"
@@ -44,7 +45,7 @@ func start_end_turn_timer():
 func roll_attack():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var number = rng.randi_range(4, 4)
+	var number = rng.randi_range(1, 4)
 	choose_attack(number)
 
 

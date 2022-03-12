@@ -7,6 +7,7 @@ onready var six_pack = $Face/SixPack
 onready var fett_pack = $Face/FettPack
 onready var winterfell_symbol = $Control/WinterfellSym
 
+var start_pos = Vector2(168, 243)
 var bodycheck_dmg:int
 var convert_healing_to_armor:bool
 var count_down:int
@@ -22,6 +23,7 @@ func _process(delta):
 		six_pack.visible = false
 		fett_pack.visible = false
 		get_child(1).get_child(2).hide()
+	print(self.position)
 
 func apply_damage(var damage):
 	.apply_damage(damage)
@@ -71,7 +73,23 @@ func calc_schwitzer_damage(var dmg):
 	return ceil(bodycheck_dmg)
 
 func activate_bodycheck_card():
+	$AttackAnimations.play("bodycheck")
+	$PlayerHand.visible = false
+	Global.ui.get_child(0).visible = false
+	$Control/HeartSymbol.visible = false
+	$Control/ArmorSymbol.visible = false
+	$Control/ProgressBar.visible = false
+
+
+func bodycheck_attack():
 	Global.inactive_player.apply_damage(calc_schwitzer_damage(armor))
+	self.position = start_pos
+	self.rotation = 0
+	$PlayerHand.visible = true
+	Global.ui.get_child(0).visible = true
+	$Control/HeartSymbol.visible = true
+	$Control/ArmorSymbol.visible = true
+	$Control/ProgressBar.visible = true
 
 func count_down_rounds():
 	if count_down > 0:
